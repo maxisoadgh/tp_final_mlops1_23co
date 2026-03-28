@@ -1,0 +1,17 @@
+# Entorno y secretos
+.env
+
+# Directorios generados por Airflow
+airflow/logs/
+airflow/plugins/
+
+# Notebooks de Jupyter, comentado
+# notebooks/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Docker
+*.log

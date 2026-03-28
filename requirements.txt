@@ -1,0 +1,10 @@
+jupyterlab
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+mlflow[extras]
+boto3
+xgboost
+optuna
