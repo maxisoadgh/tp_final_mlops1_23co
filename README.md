@@ -2,6 +2,13 @@
 
 Entorno de desarrollo con Docker Compose para el trabajo práctico del curso.
 
+## Integrantes
+
+- Federica Pavese (federica.pavese@gmail.com)
+- Liliana Mariel Di Lanzo (lic.dilanzo@gmail.com)
+- Pablo A. Salvagni (psalvagni@gmail.com )
+- Pablo Maximiliano Lulic (maxisoad@gmail.com)
+
 ## Servicios
 
 | Servicio      | URL                          | Credenciales          | Notas                          |
