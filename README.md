@@ -7,6 +7,7 @@ Entorno de desarrollo con Docker Compose para el trabajo práctico del curso.
 | Servicio      | URL                          | Credenciales          | Notas                          |
 |---------------|------------------------------|-----------------------|--------------------------------|
 | JupyterLab    | http://localhost:8888        | sin token/password    |                                |
+| FastAPI       | http://localhost:8000        | —                     | docs en /docs                  |
 | MLflow        | http://localhost:5000        | —                     | acceso externo directo         |
 | mlflow-proxy  | interno :5001                | —                     | usado por Jupyter internamente |
 | Airflow       | http://localhost:8080        | airflow / airflow     |                                |
@@ -24,9 +25,15 @@ TP/
 ├── .gitignore
 ├── requirements.txt                # paquetes Python del entorno JupyterLab
 │
+├── api/
+│   ├── main.py                     # app FastAPI
+│   └── requirements.txt
+│
 ├── dockerfiles/
 │   ├── jupyter/
 │   │   └── Dockerfile              # python:3.12-slim + uv + JupyterLab
+│   ├── api/
+│   │   └── Dockerfile              # python:3.12-slim + uv + uvicorn
 │   ├── mlflow/
 │   │   ├── Dockerfile
 │   │   └── requirements.txt
@@ -118,11 +125,14 @@ Todos los servicios comparten la red interna `backend`. Las conexiones entre con
 │  JupyterLab │────▶│ mlflow-proxy │────▶│    MLflow    │────▶│  PostgreSQL  │
 │  :8888      │     │  nginx :5001 │     │    :5000     │     │  (mlflow_db) │
 └─────────────┘     └──────────────┘     └──────────────┘     └──────────────┘
-       │                                        │
-       │                                 ┌──────────────┐
-       └────────────────────────────────▶│    MinIO     │
-                                         │  :9000/:9001 │
-                                         └──────────────┘
+       │                  ▲                      │
+       │                  │               ┌──────────────┐
+       └──────────────────┼──────────────▶│    MinIO     │
+                          │               │  :9000/:9001 │
+┌─────────────┐           │               └──────────────┘
+│   FastAPI   │───────────┘
+│   :8000     │
+└─────────────┘
 
 ┌─────────────────────────────────────────────────────────┐
 │  Airflow (CeleryExecutor)                               │
@@ -151,6 +161,23 @@ JupyterLab → mlflow-proxy:5001 (nginx: Host → localhost) → mlflow:5000
 ```
 
 La configuración está en `nginx/mlflow.conf`. La variable de entorno `MLFLOW_TRACKING_URI` en el contenedor Jupyter apunta a `http://mlflow-proxy:5001` automáticamente — no hace falta llamar a `mlflow.set_tracking_uri()` desde los notebooks.
+
+## FastAPI
+
+El código de la API está en `api/main.py`. Los cambios aplicados se ven automáticamente.
+
+Para agregar paquetes nuevos a la API, agregarlos en `api/requirements.txt` y hacer el build:º
+
+```bash
+docker-compose up --build -d api
+```
+
+FastAPI genera documentación:
+
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+
+La API tiene acceso a MLflow (vía proxy) y MinIO con las mismas variables de entorno que Jupyter.
 
 ## Uso desde notebooks
 

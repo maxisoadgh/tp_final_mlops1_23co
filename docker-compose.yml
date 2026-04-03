@@ -191,6 +191,30 @@ services:
     volumes:
       - ./notebooks:/home/notebooks
 
+  # ── FastAPI ──────────────────────────────────────────────────
+  api:
+    build:
+      context: '.'
+      dockerfile: './dockerfiles/api/Dockerfile'
+    image: fastapi_tp
+    container_name: fastapi
+    ports:
+      - "${API_PORT:-8000}:8000"
+    networks:
+      - backend
+    environment:
+      MLFLOW_TRACKING_URI: http://mlflow-proxy:5001
+      AWS_ACCESS_KEY_ID: ${MINIO_ACCESS_KEY:-minio}
+      AWS_SECRET_ACCESS_KEY: ${MINIO_SECRET_ACCESS_KEY:-minio123}
+      MLFLOW_S3_ENDPOINT_URL: http://minio:9000
+      GIT_PYTHON_REFRESH: quiet
+    volumes:
+      - ./api:/app
+    depends_on:
+      mlflow:
+        condition: service_healthy
+    restart: always
+
   # ── Airflow ──────────────────────────────────────────────────
   airflow-init:
     <<: *airflow-common

@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+mlflow[extras]
+boto3
+pandas
+scikit-learn
+pydantic
