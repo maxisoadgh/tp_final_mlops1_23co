@@ -190,6 +190,7 @@ services:
       GIT_PYTHON_REFRESH: quiet
     volumes:
       - ./notebooks:/home/notebooks
+      - ./datasets:/home/datasets
 
   # ── FastAPI ──────────────────────────────────────────────────
   api:

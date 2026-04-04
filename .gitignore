@@ -6,7 +6,7 @@ airflow/logs/
 airflow/plugins/
 
 # Notebooks de Jupyter, comentado
-# notebooks/
+notebooks/.ipynb_checkpoints
 
 # Python
 __pycache__/
