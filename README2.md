@@ -8,7 +8,6 @@
 | Liliana Mariel Di Lanzo | lic.dilanzo@gmail.com |
 | Pablo A. Salvagni | psalvagni@gmail.com |
 | Pablo Maximiliano Lulic | maxisoad@gmail.com |
-| Reinaldo Magallanes Saunders | rei.magallanes@gmail.com |
 
 ---
 
