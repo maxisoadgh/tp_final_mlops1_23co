@@ -4,8 +4,6 @@ import warnings
 
 import mlflow
 import mlflow.sklearn
-import mlflow.xgboost
-import numpy as np
 import optuna
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
