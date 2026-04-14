@@ -55,7 +55,7 @@ TP/
 │   └── init.sql                    # crea las bases de datos airflow y mlflow_db
 │
 ├── notebooks/                      # directorio local montado en JupyterLab
-│   └── (tus notebooks van aquí)
+│
 │
 └── airflow/
     ├── dags/                       # DAGs de Airflow
@@ -85,7 +85,7 @@ cp .env.example .env
 
 ```bash
 # Desde el directorio
-docker-compose up --build -d
+docker-compose up --build
 ```
 
 Ver el estado de los contenedores:
@@ -108,10 +108,10 @@ Detener el entorno:
 docker-compose down
 ```
 
-Detener y eliminar volúmenes (borra datos de Postgres y MinIO):
+Detener, eliminar volúmenes y las imágenes locales:
 
 ```bash
-docker-compose down -v
+docker-compose down -v --rmi local
 ```
 
 ## Agregar paquetes Python al entorno Jupyter
@@ -173,7 +173,7 @@ La configuración está en `nginx/mlflow.conf`. La variable de entorno `MLFLOW_T
 
 El código de la API está en `api/main.py`. Los cambios aplicados se ven automáticamente.
 
-Para agregar paquetes nuevos a la API, agregarlos en `api/requirements.txt` y hacer el build:º
+Para agregar paquetes nuevos a la API, agregarlos en `api/requirements.txt` y hacer el build:
 
 ```bash
 docker-compose up --build -d api

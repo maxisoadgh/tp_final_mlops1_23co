@@ -16,6 +16,7 @@ x-airflow-common: &airflow-common
     AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://${AIRFLOW_PG_USER:-airflow}:${AIRFLOW_PG_PASSWORD:-airflow}@postgres:5432/${AIRFLOW_PG_DATABASE:-airflow}
     AIRFLOW__CORE__FERNET_KEY: ''
     AIRFLOW__API_AUTH__JWT_SECRET: '${AIRFLOW__API_AUTH__JWT_SECRET}'
+    AIRFLOW__WEBSERVER__SECRET_KEY: '${AIRFLOW__API_AUTH__JWT_SECRET}'
     AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION: 'true'
     AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
     AIRFLOW__CORE__EXECUTION_API_SERVER_URL: 'http://airflow-apiserver:8080/execution/'
@@ -26,12 +27,16 @@ x-airflow-common: &airflow-common
     AWS_ACCESS_KEY_ID: ${MINIO_ACCESS_KEY:-minio}
     AWS_SECRET_ACCESS_KEY: ${MINIO_SECRET_ACCESS_KEY:-minio123}
     AWS_ENDPOINT_URL_S3: http://minio:9000
+    MLFLOW_TRACKING_URI: http://mlflow-proxy:5001
+    MLFLOW_S3_ENDPOINT_URL: http://minio:9000
   volumes:
     - ${AIRFLOW_PROJ_DIR:-./airflow}/dags:/opt/airflow/dags
     - ${AIRFLOW_PROJ_DIR:-./airflow}/logs:/opt/airflow/logs
     - ${AIRFLOW_PROJ_DIR:-./airflow}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-./airflow}/plugins:/opt/airflow/plugins
     - ${AIRFLOW_PROJ_DIR:-./airflow}/secrets:/opt/secrets
+    - ./src:/opt/airflow/src
+    - ./datasets:/opt/airflow/datasets
   networks:
     - backend
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}"
@@ -170,9 +175,7 @@ services:
   # ── JupyterLab ───────────────────────────────────────────────
   jupyter:
     restart: always
-    build:
-      context: '.' # raíz de la carpeta para tomar el requirements.txt después
-      dockerfile: './dockerfiles/jupyter/Dockerfile'
+    build: './dockerfiles/jupyter'
     image: jupyterlab_tp
     container_name: jupyterlab
     depends_on:
@@ -191,6 +194,7 @@ services:
     volumes:
       - ./notebooks:/home/notebooks
       - ./datasets:/home/datasets
+      - ./src:/home/src
 
   # ── FastAPI ──────────────────────────────────────────────────
   api:
@@ -211,6 +215,7 @@ services:
       GIT_PYTHON_REFRESH: quiet
     volumes:
       - ./api:/app
+      - ./src:/app/src
     depends_on:
       mlflow:
         condition: service_healthy
@@ -323,6 +328,8 @@ services:
         condition: service_healthy
       airflow-init:
         condition: service_completed_successfully
+      mlflow-proxy:
+        condition: service_started
 
   airflow-triggerer:
     <<: *airflow-common

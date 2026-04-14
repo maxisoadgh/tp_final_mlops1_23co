@@ -2,3 +2,7 @@ pandas
 scikit-learn
 mlflow
 boto3
+xgboost
+optuna
+optuna-integration[xgboost]
+numpy
