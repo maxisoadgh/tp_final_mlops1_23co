@@ -26,45 +26,59 @@ Entorno de desarrollo con Docker Compose para el trabajo práctico del curso.
 
 ```
 TP/
-├── docker-compose.yml              # definición de todos los servicios
-├── .env                            # variables de entorno (puertos, credenciales) — no versionar
-├── .env.example                    # plantilla de .env para compartir
-├── .gitignore
-├── requirements.txt                # paquetes Python del entorno JupyterLab
+├── docker-compose.yml
+├── .env / .env.example
+│
+├── src/                                # módulos Python compartidos (montado en Airflow, API, Jupyter)
+│   ├── config.py                       # constantes, columnas, paths
+│   ├── data_loader.py                  # carga CSV, limpieza, get_dummies
+│   ├── preprocessing.py                # ColumnTransformer, Pipeline, inferencia
+│   ├── training.py                     # entrenamiento con Optuna + MLflow
+│   ├── evaluation.py                   # métricas, selección y registro del mejor modelo
+│   └── mlflow_utils.py                 # setup experimentos, registro en Model Registry
 │
 ├── api/
-│   ├── main.py                     # app FastAPI
+│   ├── main.py                         # API de inferencia (FastAPI)
+│   ├── schemas.py                      # modelos Pydantic (input/output)
 │   └── requirements.txt
+│
+├── airflow/
+│   ├── dags/
+│   │   └── airline_satisfaction_dag.py # DAG de entrenamiento (TaskFlow API)
+│   ├── logs/
+│   ├── plugins/
+│   ├── config/
+│   └── secrets/
+│       ├── connections.yaml
+│       └── variables.yaml
+│
+├── notebooks/
+│   ├── mlflow_hyperparam_search.ipynb  # búsqueda de hiperparámetros original
+│   └── ...
+│
+├── datasets/
+│   └── aerolineas/
+│       ├── train.csv
+│       └── test.csv
 │
 ├── dockerfiles/
 │   ├── jupyter/
-│   │   └── Dockerfile              # python:3.12-slim + uv + JupyterLab
+│   │   ├── Dockerfile
+│   │   └── requirements.txt
 │   ├── api/
-│   │   └── Dockerfile              # python:3.12-slim + uv + uvicorn
+│   │   └── Dockerfile
 │   ├── mlflow/
 │   │   ├── Dockerfile
 │   │   └── requirements.txt
 │   └── airflow/
-│       ├── Dockerfile              # apache/airflow:3.0.2 con dependencias extra
+│       ├── Dockerfile
 │       └── requirements.txt
 │
 ├── nginx/
-│   └── mlflow.conf                 # proxy que reescribe Host header hacia MLflow
+│   └── mlflow.conf                     # proxy que reescribe Host header hacia MLflow
 │
-├── postgres/
-│   └── init.sql                    # crea las bases de datos airflow y mlflow_db
-│
-├── notebooks/                      # directorio local montado en JupyterLab
-│
-│
-└── airflow/
-    ├── dags/                       # DAGs de Airflow
-    ├── logs/                       # logs generados por Airflow (ignorado en git)
-    ├── plugins/                    # plugins personalizados
-    ├── config/                     # configuración adicional
-    └── secrets/
-        ├── connections.yaml        # conexiones (ej: S3/MinIO, bases de datos)
-        └── variables.yaml          # variables de entorno para los DAGs
+└── postgres/
+    └── init.sql                        # crea bases airflow y mlflow_db
 ```
 
 ## Requisitos previos
@@ -116,7 +130,7 @@ docker-compose down -v --rmi local
 
 ## Agregar paquetes Python al entorno Jupyter
 
-Editar el `requirements.txt` de la raíz y hacer el build de nuevo:
+Editar `dockerfiles/jupyter/requirements.txt` y hacer el build de nuevo:
 
 ```bash
 docker-compose build jupyter
