@@ -20,7 +20,7 @@ default_args = {
 }
 
 # aca defino la cantidad de trials para todos los modelos
-N_TRIALS = 10
+N_TRIALS = 3
 
 
 @dag(

@@ -6,3 +6,5 @@ xgboost
 optuna
 optuna-integration[xgboost]
 numpy
+apache-airflow-providers-amazon
+boto3
