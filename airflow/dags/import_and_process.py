@@ -6,28 +6,26 @@ import os
 
 CONN_ID = "minio_conn"
 BUCKET_NAME = "data-lake"
-archivos = ["aerolineas/train.csv", "aerolineas/test.csv"]
+ARCHIVOS_S3 = ["train.csv", "test.csv"]
+RUTA_DESTINO = "/opt/airflow/datasets"
 
 
-def descargar_de_minio():
+def load_and_prepare_data():
     s3 = S3Hook(aws_conn_id=CONN_ID)
 
-    archivos = ["train.csv", "test.csv"]
-    ruta_destino = "/opt/airflow/datasets"
+    if not os.path.exists(RUTA_DESTINO):
+        os.makedirs(RUTA_DESTINO, exist_ok=True)
 
-    if not os.path.exists(ruta_destino):
-        os.makedirs(ruta_destino)
-
-    for nombre_archivo in archivos:
-        print(f"Buscando {nombre_archivo} en bucket {BUCKET_NAME}...")
+    for key in ARCHIVOS_S3:
+        print(f"Buscando {key} en bucket {BUCKET_NAME}...")
 
         file_path = s3.download_file(
-            key=nombre_archivo,
+            key=key,
             bucket_name=BUCKET_NAME,
-            local_path=ruta_destino,
+            local_path=RUTA_DESTINO,
             preserve_file_name=True,
         )
-        print(f"Archivo {nombre_archivo} descargado exitosamente en: {file_path}")
+        print(f"Archivo {key} descargado exitosamente en: {file_path}")
 
 
 with DAG(
@@ -39,5 +37,5 @@ with DAG(
 ) as dag:
 
     tarea_descarga = PythonOperator(
-        task_id="tarea_descarga_minio", python_callable=descargar_de_minio
+        task_id="tarea_descarga_minio", python_callable=load_and_prepare_data
     )
