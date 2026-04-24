@@ -5,13 +5,14 @@ from datetime import datetime
 import os
 
 CONN_ID = "minio_conn"
-BUCKET_NAME = "datasets"
+BUCKET_NAME = "data-lake"
+archivos = ["aerolineas/train.csv", "aerolineas/test.csv"]
 
 
 def descargar_de_minio():
     s3 = S3Hook(aws_conn_id=CONN_ID)
 
-    archivos = ["train.csv", "val.csv"]
+    archivos = ["train.csv", "test.csv"]
     ruta_destino = "/opt/airflow/datasets"
 
     if not os.path.exists(ruta_destino):
@@ -32,7 +33,7 @@ def descargar_de_minio():
 with DAG(
     dag_id="descarga_datasets_desde_minio",
     start_date=datetime(2024, 1, 1),
-    schedule_interval=None,
+    schedule=None,
     catchup=False,
     tags=["tp_aprendizaje_maquina"],
 ) as dag:
@@ -40,5 +41,3 @@ with DAG(
     tarea_descarga = PythonOperator(
         task_id="tarea_descarga_minio", python_callable=descargar_de_minio
     )
-
-dag = descargar_de_minio()

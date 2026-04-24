@@ -127,7 +127,23 @@ services:
       /usr/bin/mc mb --ignore-existing s3/${MLFLOW_BUCKET_NAME:-mlflow};
       exit 0;
       '
-
+  minio-provisioner:
+    image: minio/mc
+    depends_on:
+      minio:
+        condition: service_healthy
+    volumes:
+      - ./datasets:/datasets
+    networks:
+      - backend
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set myminio http://minio:9000 minio minio123;
+      /usr/bin/mc mb --ignore-existing myminio/data-lake;
+      /usr/bin/mc cp -r /datasets/aerolineas/ myminio/data-lake/;
+      exit 0;
+      "
+      
   # ── MLflow ───────────────────────────────────────────────────
   mlflow:
     restart: always
