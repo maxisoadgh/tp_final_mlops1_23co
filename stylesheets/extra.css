@@ -1,0 +1,83 @@
+/* ─── Hero ─────────────────────────────────────────── */
+.md-typeset .hero {
+  background: linear-gradient(135deg, #1a0533 0%, #2d1b69 50%, #1565c0 100%);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  margin: 0 0 2rem;
+  text-align: center;
+  color: white;
+}
+.md-typeset .hero h1 {
+  color: white !important;
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+}
+.md-typeset .hero p {
+  color: rgba(255,255,255,0.78);
+  font-size: 1.05rem;
+  margin: 0 0 1.5rem;
+}
+.md-typeset .hero .badges {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.md-typeset .hero .badge {
+  background: rgba(255,255,255,0.13);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 20px;
+  padding: 0.25rem 0.8rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.92);
+}
+
+/* ─── Service cards ─────────────────────────────────── */
+.md-typeset .service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.md-typeset .service-card {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  padding: 1.2rem;
+  transition: border-color 0.15s, transform 0.1s;
+}
+.md-typeset .service-card:hover {
+  border-color: var(--md-primary-fg-color);
+  transform: translateY(-1px);
+}
+.md-typeset .service-card .icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+.md-typeset .service-card h3 { margin: 0 0 0.25rem; font-size: 1rem; }
+.md-typeset .service-card p { font-size: 0.84rem; margin: 0; color: var(--md-default-fg-color--light); }
+
+/* ─── Team cards ─────────────────────────────────────── */
+.md-typeset .team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.md-typeset .team-card {
+  background: var(--md-code-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  padding: 1.2rem 1.4rem;
+}
+.md-typeset .team-card .avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--md-primary-fg-color);
+  color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 1rem;
+  margin-bottom: 0.7rem;
+}
+.md-typeset .team-card h3 { margin: 0 0 0.1rem; font-size: 0.95rem; }
+.md-typeset .team-card p { font-size: 0.8rem; margin: 0; color: var(--md-default-fg-color--light); }
+
+/* ─── Mermaid centrado ──────────────────────────────── */
+.mermaid { text-align: center; margin: 1.5rem 0; }
