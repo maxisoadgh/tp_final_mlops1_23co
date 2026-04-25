@@ -75,47 +75,12 @@ Artifacts específicos por modelo:
 
 ## Resumen por modelo
 
-### Logistic Regression
-
-- métricas finales de test
-- modelo serializado
-- columnas esperadas
-- matriz de confusión
-- curva ROC
-- curva Precision-Recall
-- coeficientes del modelo
-
-### KNN
-
-- métricas finales de test
-- métricas de tuning (`f1_cv`, `f1_cv_std`, `best_f1`)
-- modelo serializado
-- columnas esperadas
-- matriz de confusión
-- curva ROC
-- curva Precision-Recall
-
-### Random Forest
-
-- métricas finales de test
-- métricas de tuning (`f1_cv`, `f1_cv_std`, `best_f1`)
-- modelo serializado
-- columnas esperadas
-- matriz de confusión
-- curva ROC
-- curva Precision-Recall
-- importancia de variables
-
-### XGBoost
-
-- métricas finales de test
-- métricas de tuning (`val_f1`, `best_f1`)
-- modelo serializado
-- columnas esperadas
-- matriz de confusión
-- curva ROC
-- curva Precision-Recall
-- importancia de variables
+| Modelo | Métricas finales de test | Métricas de tuning | Artifacts comunes | Artifacts específicos |
+|---|---|---|---|---|
+| Logistic Regression | `test_precision`, `test_recall`, `test_f1`, `test_accuracy` | No aplica | `model`, `feature_columns.json`, `plots/confusion_matrix.png`, `plots/roc_curve.png`, `plots/precision_recall_curve.png` | `plots/logistic_coefficients.png` |
+| KNN | `test_precision`, `test_recall`, `test_f1`, `test_accuracy` | `f1_cv`, `f1_cv_std`, `best_f1` | `model`, `feature_columns.json`, `plots/confusion_matrix.png`, `plots/roc_curve.png`, `plots/precision_recall_curve.png` | No registra artifacts extra de interpretabilidad |
+| Random Forest | `test_precision`, `test_recall`, `test_f1`, `test_accuracy` | `f1_cv`, `f1_cv_std`, `best_f1` | `model`, `feature_columns.json`, `plots/confusion_matrix.png`, `plots/roc_curve.png`, `plots/precision_recall_curve.png` | `plots/feature_importance.png` |
+| XGBoost | `test_precision`, `test_recall`, `test_f1`, `test_accuracy` | `val_f1`, `best_f1` | `model`, `feature_columns.json`, `plots/confusion_matrix.png`, `plots/roc_curve.png`, `plots/precision_recall_curve.png` | `plots/feature_importance.png` |
 
 ## Módulos principales
 
