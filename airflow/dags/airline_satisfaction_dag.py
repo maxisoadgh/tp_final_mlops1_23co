@@ -20,7 +20,7 @@ default_args = {
 }
 
 # aca defino la cantidad de trials para todos los modelos
-N_TRIALS = 3
+N_TRIALS = 10
 
 
 @dag(
@@ -38,10 +38,12 @@ def airline_satisfaction_pipeline():
         """Descarga de MinIO/S3, preprocesa y prepara para el entrenamiento."""
         import os
         import uuid
+
         import pandas as pd
+
         from airflow.providers.amazon.aws.hooks.s3 import S3Hook
         from src.config import EXPERIMENT_NAME
-        from src.data_loader import prepare_features_target
+        from src.data_loader import load_dataset, prepare_features_target
         from src.mlflow_utils import setup_experiment
 
         setup_experiment(EXPERIMENT_NAME)
@@ -49,20 +51,29 @@ def airline_satisfaction_pipeline():
         s3 = S3Hook(aws_conn_id="minio_conn")
         BUCKET = "data-lake"
         LOCAL_DIR = "/opt/airflow/datasets/aerolineas"
-        ARCHIVOS = ["aerolineas/train.csv", "aerolineas/test.csv"]
+        ARCHIVOS_S3 = ["aerolineas/train.csv", "aerolineas/test.csv"]
 
         os.makedirs(LOCAL_DIR, exist_ok=True)
 
-        for filename in ARCHIVOS:
+        for key in ARCHIVOS_S3:
             s3.download_file(
-                key=filename,
+                key=key,
                 bucket_name=BUCKET,
                 local_path=LOCAL_DIR,
                 preserve_file_name=True,
             )
 
-        df_train = pd.read_csv(os.path.join(LOCAL_DIR, "train.csv"))
-        df_test = pd.read_csv(os.path.join(LOCAL_DIR, "test.csv"))
+        os.makedirs(LOCAL_DIR, exist_ok=True)
+        for key in ARCHIVOS_S3:
+            s3.download_file(
+                key=key,
+                bucket_name=BUCKET,
+                local_path=LOCAL_DIR,
+                preserve_file_name=True,
+            )
+
+        df_train = load_dataset(os.path.join(LOCAL_DIR, "train.csv"))
+        df_test = load_dataset(os.path.join(LOCAL_DIR, "test.csv"))
 
         X_train, y_train = prepare_features_target(df_train)
         X_test, y_test = prepare_features_target(df_test)
@@ -71,13 +82,9 @@ def airline_satisfaction_pipeline():
         os.makedirs(run_dir, exist_ok=True)
 
         X_train.to_parquet(os.path.join(run_dir, "X_train.parquet"))
+        y_train.to_frame().to_parquet(os.path.join(run_dir, "y_train.parquet"))
         X_test.to_parquet(os.path.join(run_dir, "X_test.parquet"))
-
-        y_train_df = y_train.to_frame() if hasattr(y_train, "to_frame") else y_train
-        y_test_df = y_test.to_frame() if hasattr(y_test, "to_frame") else y_test
-
-        y_train_df.to_parquet(os.path.join(run_dir, "y_train.parquet"))
-        y_test_df.to_parquet(os.path.join(run_dir, "y_test.parquet"))
+        y_test.to_frame().to_parquet(os.path.join(run_dir, "y_test.parquet"))
 
         return {"data_dir": run_dir}
 
