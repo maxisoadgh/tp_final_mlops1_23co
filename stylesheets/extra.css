@@ -81,3 +81,9 @@
 
 /* ─── Mermaid centrado ──────────────────────────────── */
 .mermaid { text-align: center; margin: 1.5rem 0; }
+
+
+/* ─── Ocultar site name del header ─────────────────── */
+.md-header__title .md-header__topic:first-child {
+  display: none;
+}
