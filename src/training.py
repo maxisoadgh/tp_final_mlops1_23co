@@ -6,6 +6,7 @@ import mlflow
 import mlflow.sklearn
 import optuna
 import pandas as pd
+from matplotlib import pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegressionCV
 from sklearn.metrics import f1_score
@@ -15,6 +16,14 @@ from sklearn.pipeline import Pipeline
 from xgboost import XGBClassifier
 
 from src.config import NUMERIC_COLS, RANDOM_STATE
+from src.evaluation import (
+    build_confusion_matrix_figure,
+    build_feature_importance_figure,
+    build_logistic_coefficients_figure,
+    build_precision_recall_curve_figure,
+    build_roc_curve_figure,
+    compute_metrics,
+)
 from src.mlflow_utils import log_feature_columns
 from src.preprocessing import build_preprocessor, get_rating_cols
 
@@ -30,6 +39,15 @@ def _start_nested_run(parent_run_id: str, name: str):
     return mlflow.start_run(run_name=name, nested=True)
 
 
+def _get_positive_class_scores(model, X):
+    """Obtiene scores de la clase positiva para curvas ROC y PR."""
+    if hasattr(model, "predict_proba"):
+        return model.predict_proba(X)[:, 1]
+    if hasattr(model, "decision_function"):
+        return model.decision_function(X)
+    raise ValueError("El modelo no expone predict_proba ni decision_function.")
+
+
 def train_logistic_regression(
     X_train: pd.DataFrame,
     y_train: pd.Series,
@@ -40,7 +58,7 @@ def train_logistic_regression(
     rating_cols = get_rating_cols(X_train)
     preprocessor = build_preprocessor(NUMERIC_COLS, rating_cols)
 
-    mlflow.sklearn.autolog(log_models=True, silent=True)
+    # mlflow.sklearn.autolog(log_models=True, silent=True)
     try:
         with mlflow.start_run(
             run_name="LogisticRegression",
@@ -54,19 +72,42 @@ def train_logistic_regression(
                 )),
             ])
             pipe.fit(X_train, y_train)
+            mlflow.sklearn.log_model(pipe, "model")
+            transformed_feature_names = pipe.named_steps[
+                "pre"
+            ].get_feature_names_out()
+            logistic_coefficients = pipe.named_steps["cls"].coef_[0]
+            fig = build_logistic_coefficients_figure(
+                feature_names=transformed_feature_names.tolist(),
+                coefficients=logistic_coefficients,
+                title="Logistic Regression Coefficients",
+            )
+            mlflow.log_figure(fig, "plots/logistic_coefficients.png")
+            plt.close(fig)
 
             y_pred = pipe.predict(X_test)
-            test_f1 = f1_score(y_test, y_pred)
-            mlflow.log_metric("test_f1", test_f1)
+            y_score = _get_positive_class_scores(pipe, X_test)
+            metrics = compute_metrics(y_test, y_pred)
+            mlflow.log_metrics(metrics)
+            fig = build_confusion_matrix_figure(y_test, y_pred)
+            mlflow.log_figure(fig, "plots/confusion_matrix.png")
+            plt.close(fig)
+            fig = build_roc_curve_figure(y_test, y_score)
+            mlflow.log_figure(fig, "plots/roc_curve.png")
+            plt.close(fig)
+            fig = build_precision_recall_curve_figure(y_test, y_score)
+            mlflow.log_figure(fig, "plots/precision_recall_curve.png")
+            plt.close(fig)
             log_feature_columns(list(X_train.columns))
 
             return {
                 "run_id": run.info.run_id,
-                "f1_score": round(test_f1, 4),
+                "f1_score": metrics["test_f1"],
                 "model_name": "logistic_regression",
             }
     finally:
-        mlflow.sklearn.autolog(disable=True)
+        #mlflow.sklearn.autolog(disable=True)
+        pass
 
 
 def train_knn(
@@ -106,11 +147,14 @@ def train_knn(
             with _start_nested_run(parent_id, f"trial_{trial.number}"):
                 mlflow.log_params(params)
                 model = KNeighborsClassifier(**params, n_jobs=-1)
-                score = cross_val_score(
+                scores = cross_val_score(
                     model, X_train_scaled, y_train,
                     scoring="f1", cv=3, n_jobs=-1,
-                ).mean()
+                )
+                score = float(scores.mean())
+                score_std = float(scores.std())
                 mlflow.log_metric("f1_cv", score)
+                mlflow.log_metric("f1_cv_std", score_std)
             return score
 
         study = optuna.create_study(direction="maximize")
@@ -125,13 +169,23 @@ def train_knn(
         mlflow.sklearn.log_model(best_model, "model")
 
         y_pred = best_model.predict(X_test_scaled)
-        test_f1 = f1_score(y_test, y_pred)
-        mlflow.log_metric("test_f1", test_f1)
+        y_score = _get_positive_class_scores(best_model, X_test_scaled)
+        metrics = compute_metrics(y_test, y_pred)
+        mlflow.log_metrics(metrics)
+        fig = build_confusion_matrix_figure(y_test, y_pred)
+        mlflow.log_figure(fig, "plots/confusion_matrix.png")
+        plt.close(fig)
+        fig = build_roc_curve_figure(y_test, y_score)
+        mlflow.log_figure(fig, "plots/roc_curve.png")
+        plt.close(fig)
+        fig = build_precision_recall_curve_figure(y_test, y_score)
+        mlflow.log_figure(fig, "plots/precision_recall_curve.png")
+        plt.close(fig)
         log_feature_columns(list(X_train.columns))
 
         return {
             "run_id": parent_id,
-            "f1_score": round(test_f1, 4),
+            "f1_score": metrics["test_f1"],
             "model_name": "knn",
         }
 
@@ -173,11 +227,14 @@ def train_random_forest(
                 model = RandomForestClassifier(
                     **params, random_state=RANDOM_STATE, n_jobs=-1
                 )
-                score = cross_val_score(
+                scores = cross_val_score(
                     model, X_train, y_train,
                     scoring="f1", cv=3, n_jobs=-1,
-                ).mean()
+                )
+                score = float(scores.mean())
+                score_std = float(scores.std())
                 mlflow.log_metric("f1_cv", score)
+                mlflow.log_metric("f1_cv_std", score_std)
             return score
 
         study = optuna.create_study(direction="maximize")
@@ -191,15 +248,32 @@ def train_random_forest(
         )
         best_model.fit(X_train, y_train)
         mlflow.sklearn.log_model(best_model, "model")
+        fig = build_feature_importance_figure(
+            feature_names=list(X_train.columns),
+            importances=best_model.feature_importances_,
+            title="Random Forest Feature Importance",
+        )
+        mlflow.log_figure(fig, "plots/feature_importance.png")
+        plt.close(fig)
 
         y_pred = best_model.predict(X_test)
-        test_f1 = f1_score(y_test, y_pred)
-        mlflow.log_metric("test_f1", test_f1)
+        y_score = _get_positive_class_scores(best_model, X_test)
+        metrics = compute_metrics(y_test, y_pred)
+        mlflow.log_metrics(metrics)
+        fig = build_confusion_matrix_figure(y_test, y_pred)
+        mlflow.log_figure(fig, "plots/confusion_matrix.png")
+        plt.close(fig)
+        fig = build_roc_curve_figure(y_test, y_score)
+        mlflow.log_figure(fig, "plots/roc_curve.png")
+        plt.close(fig)
+        fig = build_precision_recall_curve_figure(y_test, y_score)
+        mlflow.log_figure(fig, "plots/precision_recall_curve.png")
+        plt.close(fig)
         log_feature_columns(list(X_train.columns))
 
         return {
             "run_id": parent_id,
-            "f1_score": round(test_f1, 4),
+            "f1_score": metrics["test_f1"],
             "model_name": "random_forest",
         }
 
@@ -283,7 +357,7 @@ def train_xgboost(
 
                 y_pred_val = model.predict(X_val)
                 score = f1_score(y_val, y_pred_val)
-                mlflow.log_metric("f1_cv", score)
+                mlflow.log_metric("val_f1", score)
             return score
 
         study = optuna.create_study(
@@ -306,14 +380,31 @@ def train_xgboost(
         )
         best_model.fit(X_train, y_train)
         mlflow.sklearn.log_model(best_model, "model")
+        fig = build_feature_importance_figure(
+            feature_names=list(X_train.columns),
+            importances=best_model.feature_importances_,
+            title="XGBoost Feature Importance",
+        )
+        mlflow.log_figure(fig, "plots/feature_importance.png")
+        plt.close(fig)
 
         y_pred = best_model.predict(X_test)
-        test_f1 = f1_score(y_test, y_pred)
-        mlflow.log_metric("test_f1", test_f1)
+        y_score = _get_positive_class_scores(best_model, X_test)
+        metrics = compute_metrics(y_test, y_pred)
+        mlflow.log_metrics(metrics)
+        fig = build_confusion_matrix_figure(y_test, y_pred)
+        mlflow.log_figure(fig, "plots/confusion_matrix.png")
+        plt.close(fig)
+        fig = build_roc_curve_figure(y_test, y_score)
+        mlflow.log_figure(fig, "plots/roc_curve.png")
+        plt.close(fig)
+        fig = build_precision_recall_curve_figure(y_test, y_score)
+        mlflow.log_figure(fig, "plots/precision_recall_curve.png")
+        plt.close(fig)
         log_feature_columns(list(X_train.columns))
 
         return {
             "run_id": parent_id,
-            "f1_score": round(test_f1, 4),
+            "f1_score": metrics["test_f1"],
             "model_name": "xgboost",
         }
