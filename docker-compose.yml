@@ -48,7 +48,6 @@ x-airflow-common: &airflow-common
       condition: service_healthy
 
 services:
-
   # ── Base de datos ────────────────────────────────────────────
   postgres:
     restart: always
@@ -111,38 +110,40 @@ services:
       timeout: 10s
       retries: 5
       start_period: 10s
-  minio-create-buckets:
+  minio-init:
     image: minio/mc:latest
-    container_name: minio_create_buckets
+    container_name: minio_init
     depends_on:
       minio:
         condition: service_healthy
     networks:
       - backend
-    entrypoint: >
-      /bin/sh -c '
-      sleep 3;
-      /usr/bin/mc alias set s3 http://minio:9000 ${MINIO_ACCESS_KEY:-minio} ${MINIO_SECRET_ACCESS_KEY:-minio123};
-      /usr/bin/mc mb --ignore-existing s3/${MLFLOW_BUCKET_NAME:-mlflow};
-      exit 0;
-      '
-  minio-provisioner:
-    image: minio/mc
-    depends_on:
-      minio:
-        condition: service_healthy
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ACCESS_KEY:-minio}
+      MINIO_ROOT_PASSWORD: ${MINIO_SECRET_ACCESS_KEY:-minio123}
+      BUCKET_MLFLOW: ${MLFLOW_BUCKET_NAME:-mlflow}
+      BUCKET_DATA_LAKE: "data-lake"
     volumes:
       - ./datasets:/datasets
-    networks:
-      - backend
     entrypoint: >
-      /bin/sh -c "
-      /usr/bin/mc alias set myminio http://minio:9000 minio minio123;
-      /usr/bin/mc mb --ignore-existing myminio/data-lake;
-      /usr/bin/mc cp -r /datasets/aerolineas/ myminio/data-lake/;
+     /bin/sh -c "
+      until /usr/bin/mc alias set myminio http://minio:9000 \"$$MINIO_ROOT_USER\" \"$$MINIO_ROOT_PASSWORD\"; do
+        echo 'Esperando a MinIO...';
+        sleep 2;
+      done;
+      echo 'Creando buckets...';
+      /usr/bin/mc mb --ignore-existing myminio/$$BUCKET_MLFLOW;
+      /usr/bin/mc mb --ignore-existing myminio/$$BUCKET_DATA_LAKE;
+      echo 'Cargando datasets...';
+      if [ -d '/datasets/aerolineas' ]; then
+          /usr/bin/mc cp -r /datasets/aerolineas myminio/$$BUCKET_DATA_LAKE/;
+      else
+          echo 'ERROR: Carpeta /datasets/aerolineas no encontrada';
+      fi
+      /usr/bin/mc anonymous set download myminio/$$BUCKET_DATA_LAKE;
+      echo 'Provisioning finalizado con éxito.';
       exit 0;
       "
-      
   # ── MLflow ───────────────────────────────────────────────────
   mlflow:
     restart: always

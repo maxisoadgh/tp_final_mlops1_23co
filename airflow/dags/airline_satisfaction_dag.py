@@ -49,13 +49,13 @@ def airline_satisfaction_pipeline():
         s3 = S3Hook(aws_conn_id="minio_conn")
         BUCKET = "data-lake"
         LOCAL_DIR = "/opt/airflow/datasets/aerolineas"
-        ARCHIVOS = ["train.csv", "test.csv"]
+        ARCHIVOS = ["aerolineas/train.csv", "aerolineas/test.csv"]
 
         os.makedirs(LOCAL_DIR, exist_ok=True)
 
         for filename in ARCHIVOS:
             s3.download_file(
-                key=f"/{filename}",
+                key=filename,
                 bucket_name=BUCKET,
                 local_path=LOCAL_DIR,
                 preserve_file_name=True,

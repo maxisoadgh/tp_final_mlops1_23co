@@ -6,8 +6,8 @@ import os
 
 CONN_ID = "minio_conn"
 BUCKET_NAME = "data-lake"
-ARCHIVOS_S3 = ["train.csv", "test.csv"]
-RUTA_DESTINO = "/opt/airflow/datasets"
+ARCHIVOS_S3 = ["aerolineas/train.csv", "aerolineas/test.csv"]
+RUTA_DESTINO = "/opt/airflow/datasets/aerolineas"
 
 
 def load_and_prepare_data():
