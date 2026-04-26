@@ -8,6 +8,7 @@ import streamlit as st
 API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
 PREDICT_URL = f"{API_BASE_URL}/predict"
 HEALTH_URL = f"{API_BASE_URL}/health"
+RELOAD_URL = f"{API_BASE_URL}/reload"
 
 EXAMPLE_PAYLOAD = {
     "gender": "Male",
@@ -48,6 +49,13 @@ def get_api_health() -> dict:
 def predict_passenger(payload: dict) -> dict:
     """Envía una predicción a la API."""
     response = requests.post(PREDICT_URL, json=payload, timeout=15)
+    response.raise_for_status()
+    return response.json()
+
+
+def reload_model() -> dict:
+    """Recarga el modelo en la API desde MLflow Registry."""
+    response = requests.post(RELOAD_URL, timeout=30)
     response.raise_for_status()
     return response.json()
 
@@ -283,6 +291,21 @@ def main() -> None:
             st.error("No se pudo conectar con la API")
             if "detail" in health:
                 st.caption(health["detail"])
+
+        if st.button("Recargar modelo", use_container_width=True):
+            try:
+                reload_response = reload_model()
+                if reload_response.get("model_loaded"):
+                    st.success("Modelo recargado correctamente")
+                else:
+                    st.warning("La API respondió, pero el modelo no quedó cargado")
+            except requests.HTTPError as exc:
+                detail = exc.response.text if exc.response is not None else str(exc)
+                st.error("La API devolvió un error al recargar.")
+                st.code(detail)
+            except requests.RequestException as exc:
+                st.error("No se pudo recargar el modelo.")
+                st.caption(str(exc))
 
         use_example = st.checkbox("Cargar ejemplo", value=True)
 
