@@ -238,6 +238,24 @@ services:
         condition: service_healthy
     restart: always
 
+  # ── Streamlit ────────────────────────────────────────────────
+  streamlit:
+    build:
+      context: '.'
+      dockerfile: './dockerfiles/streamlit/Dockerfile'
+    image: streamlit_tp
+    container_name: streamlit
+    ports:
+      - "${STREAMLIT_PORT:-8501}:8501"
+    networks:
+      - backend
+    environment:
+      API_BASE_URL: http://api:8000
+    depends_on:
+      api:
+        condition: service_started
+    restart: always
+
   # ── Airflow ──────────────────────────────────────────────────
   airflow-init:
     <<: *airflow-common
