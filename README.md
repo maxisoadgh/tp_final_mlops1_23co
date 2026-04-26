@@ -11,6 +11,14 @@
 
 ---
 
+## Documentación
+
+La documentación del proyecto está disponible en:
+
+https://maxisoadgh.github.io/tp_final_mlops1_23co/
+
+---
+
 ## Problema de negocio
 
 Las aerolíneas operan en un mercado altamente competitivo donde la experiencia del pasajero es un diferenciador clave. Cada vuelo genera una gran cantidad de interacciones —check-in, servicio a bordo, puntualidad, confort— y la percepción que el pasajero se lleva de ese conjunto determina si volverá a elegir la aerolínea o no.
