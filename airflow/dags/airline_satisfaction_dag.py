@@ -1,12 +1,13 @@
 """
 DAG de entrenamiento — satisfaccion de pasajeros de aerolineas.
 
-Carga datos, entrena 4 modelos en paralelo con Optuna + MLflow,
+Carga datos, entrena 4 modelos en paralelo con Optuna + MLflow + Boto3,
 y registra el mejor en el Model Registry.
 """
 
 import datetime
 import sys
+import boto3
 
 sys.path.insert(0, "/opt/airflow")
 
@@ -29,7 +30,7 @@ N_TRIALS = 10
     default_args=default_args,
     schedule=None,
     catchup=False,
-    tags=["ml", "training", "airline-satisfaction"],
+    tags=["ml", "training", "airline-satisfaction", "boto3"],
 )
 def airline_satisfaction_pipeline():
 
@@ -48,7 +49,14 @@ def airline_satisfaction_pipeline():
 
         setup_experiment(EXPERIMENT_NAME)
 
-        s3 = S3Hook(aws_conn_id="minio_conn")
+        s3_client = boto3.client(
+            "s3",
+            endpoint_url=os.getenv("S3_ENDPOINT_URL", "http://minio:9000"),
+            aws_access_key_id=os.getenv("S3_ACCESS_KEY"),
+            aws_secret_access_key=os.getenv("S3_SECRET_KEY"),
+            region_name="us-east-1",
+        )
+
         BUCKET = "data-lake"
         LOCAL_DIR = "/opt/airflow/datasets/aerolineas"
         ARCHIVOS_S3 = ["aerolineas/train.csv", "aerolineas/test.csv"]
@@ -56,21 +64,8 @@ def airline_satisfaction_pipeline():
         os.makedirs(LOCAL_DIR, exist_ok=True)
 
         for key in ARCHIVOS_S3:
-            s3.download_file(
-                key=key,
-                bucket_name=BUCKET,
-                local_path=LOCAL_DIR,
-                preserve_file_name=True,
-            )
-
-        os.makedirs(LOCAL_DIR, exist_ok=True)
-        for key in ARCHIVOS_S3:
-            s3.download_file(
-                key=key,
-                bucket_name=BUCKET,
-                local_path=LOCAL_DIR,
-                preserve_file_name=True,
-            )
+            local_file = os.path.join(LOCAL_DIR, os.path.basename(key))
+            s3_client.download_file(BUCKET, key, local_file)
 
         df_train = load_dataset(os.path.join(LOCAL_DIR, "train.csv"))
         df_test = load_dataset(os.path.join(LOCAL_DIR, "test.csv"))
