@@ -1,0 +1,179 @@
+diff --git a/mlops-docs/docs/arquitectura/stack.md b/mlops-docs/docs/arquitectura/stack.md
+index 014659c..a25468e 100644
+--- a/mlops-docs/docs/arquitectura/stack.md
++++ b/mlops-docs/docs/arquitectura/stack.md
+@@ -11,6 +11,7 @@
+ | **mlflow-proxy** | `nginx:alpine` | `5001` (interno) | Proxy nginx — workaround DNS rebinding |
+ | **JupyterLab** | `./dockerfiles/jupyter` (Python 3.12-slim) | `8888` | Experimentación |
+ | **FastAPI** | `./dockerfiles/api` (Python 3.12-slim) | `8000` | Serving de predicciones |
++| **Streamlit** | `./dockerfiles/streamlit` (Python 3.12-slim) | `8501` | Frontend web de predicción |
+ | **Airflow** | `apache/airflow:3.0.2` | `8080` | Orquestación (CeleryExecutor) |
+ 
+ ## Paquetes Python principales
+diff --git a/mlops-docs/docs/guias/env.md b/mlops-docs/docs/guias/env.md
+index 244b2fc..09d1578 100644
+--- a/mlops-docs/docs/guias/env.md
++++ b/mlops-docs/docs/guias/env.md
+@@ -21,6 +21,7 @@ cp .env.example .env
+ | `MLFLOW_PORT` | `5000` | Puerto MLflow |
+ | `JUPYTER_PORT` | `8888` | Puerto JupyterLab |
+ | `API_PORT` | `8000` | Puerto FastAPI |
++| `STREAMLIT_PORT` | `8501` | Puerto Streamlit |
+ | `AIRFLOW_PORT` | `8080` | Puerto Airflow |
+ | `AIRFLOW_UID` | `50000` | UID proceso Airflow |
+ | `AIRFLOW_IMAGE_NAME` | `extending_airflow:latest` | Imagen Airflow custom |
+diff --git a/mlops-docs/docs/guias/quickstart.md b/mlops-docs/docs/guias/quickstart.md
+index ad8f149..993a54b 100644
+--- a/mlops-docs/docs/guias/quickstart.md
++++ b/mlops-docs/docs/guias/quickstart.md
+@@ -95,6 +95,7 @@ curl -X POST http://localhost:8000/predict \
+ | Servicio | URL | Credenciales |
+ |----------|-----|-------------|
+ | FastAPI Swagger | <http://localhost:8000/docs> | — |
++| Streamlit | <http://localhost:8501> | — |
+ | MLflow | <http://localhost:5000> | — |
+ | Airflow | <http://localhost:8080> | `airflow` / `airflow` |
+ | MinIO Console | <http://localhost:9001> | `minio` / `minio123` |
+diff --git a/mlops-docs/docs/index.md b/mlops-docs/docs/index.md
+index 7a35c68..4112589 100644
+--- a/mlops-docs/docs/index.md
++++ b/mlops-docs/docs/index.md
+@@ -29,6 +29,15 @@ El flujo completo cubre:
+ ## Servicios
+ 
+ <div class="service-grid" markdown>
++<div class="service-card" markdown>
++<div class="icon">🎛️</div>
++**Streamlit**
++
++Frontend web para predecir sin Swagger. Formulario completo con resultado visual.
++
++[Ver docs →](servicios/streamlit.md)
++</div>
++
+ <div class="service-card" markdown>
+ <div class="icon">🔬</div>
+ **JupyterLab**
+@@ -83,6 +92,7 @@ DAGs de ingesta y entrenamiento con CeleryExecutor + Redis.
+ |----------|-----|-------------|
+ | JupyterLab | <http://localhost:8888> | sin token |
+ | FastAPI Swagger | <http://localhost:8000/docs> | — |
++| Streamlit | <http://localhost:8501> | — |
+ | MLflow UI | <http://localhost:5000> | — |
+ | Airflow UI | <http://localhost:8080> | `airflow` / `airflow` |
+ | MinIO Console | <http://localhost:9001> | `minio` / `minio123` |
+diff --git a/mlops-docs/docs/servicios/index.md b/mlops-docs/docs/servicios/index.md
+index 0831b7e..7f30150 100644
+--- a/mlops-docs/docs/servicios/index.md
++++ b/mlops-docs/docs/servicios/index.md
+@@ -1,6 +1,7 @@
+ # Servicios
+ 
+ - [FastAPI](api.md) — Serving de predicciones
++- [Streamlit](streamlit.md) — Frontend de predicción
+ - [MLflow](mlflow.md) — Tracking y Model Registry
+ - [Airflow](airflow.md) — Orquestación de pipelines
+ - [MinIO](minio.md) — Artifact store S3-compatible
+diff --git a/mlops-docs/docs/servicios/streamlit.md b/mlops-docs/docs/servicios/streamlit.md
+new file mode 100644
+index 0000000..9916c2d
+--- /dev/null
++++ b/mlops-docs/docs/servicios/streamlit.md
+@@ -0,0 +1,85 @@
++# Streamlit — Frontend de predicción
++
++Interfaz web para interactuar con el modelo sin necesidad de usar curl o Swagger. Consume la FastAPI internamente.
++
++## Acceso
++
++```
++http://localhost:8501
++```
++
++---
++
++## ¿Qué hace?
++
++- Formulario con los 22 campos del pasajero organizados en 3 columnas
++- Botón **Predecir** que llama a `POST /api:8000/predict`
++- Resultado con el label (`satisfied` / `neutral or dissatisfied`) y la probabilidad en una barra visual
++- Sidebar con el estado de la API y botón para **recargar el modelo** (`POST /reload`) sin reiniciar contenedores
++- Checkbox **Cargar ejemplo** para pre-llenar el formulario con valores de prueba
++- Expanders con el payload enviado y la respuesta raw de la API
++
++---
++
++## Configuración
++
++```python title="streamlit/streamlit_app.py"
++API_BASE_URL = os.getenv("API_BASE_URL", "http://localhost:8000")
++```
++
++Dentro de Docker, la variable de entorno `API_BASE_URL=http://api:8000` apunta directamente al contenedor de FastAPI por la red interna `backend`.
++
++```toml title="streamlit/.streamlit/config.toml"
++[theme]
++base = "dark"
++primaryColor = "#2563eb"
++backgroundColor = "#0f172a"
++secondaryBackgroundColor = "#111827"
++textColor = "#f8fafc"
++```
++
++---
++
++## Dependencias
++
++```
++streamlit
++requests
++```
++
++---
++
++## Agregar paquetes
++
++```bash
++# 1. Editar dockerfiles/streamlit/requirements.txt
++# 2. Reconstruir:
++docker compose build streamlit
++docker compose up -d streamlit
++```
++
++---
++
++## Flujo de uso
++
++```mermaid
++sequenceDiagram
++    participant U as Usuario
++    participant ST as Streamlit :8501
++    participant API as FastAPI :8000
++
++    U->>ST: Completa el formulario
++    U->>ST: Click "Predecir"
++    ST->>API: POST /predict {features}
++    API-->>ST: {prediction, probability, model_version}
++    ST-->>U: Resultado + barra de probabilidad
++
++    Note over U,ST: Sidebar
++    U->>ST: Click "Recargar modelo"
++    ST->>API: POST /reload
++    API-->>ST: {status, model_loaded}
++    ST-->>U: Confirmación
++```
++
++!!! warning "Requiere modelo entrenado"
++    Si la FastAPI no tiene un modelo cargado (porque el DAG todavía no corrió), Streamlit muestra el warning `"API disponible pero sin modelo cargado"` en el sidebar y la predicción falla. Correr primero el DAG `airline_satisfaction_training` en Airflow.
+diff --git a/mlops-docs/mkdocs.yml b/mlops-docs/mkdocs.yml
+index 80f6d51..b8b49c2 100644
+--- a/mlops-docs/mkdocs.yml
++++ b/mlops-docs/mkdocs.yml
+@@ -87,6 +87,7 @@ nav:
+   - Servicios:
+     - servicios/index.md
+     - "FastAPI": servicios/api.md
++    - "Streamlit": servicios/streamlit.md
+     - "MLflow": servicios/mlflow.md
+     - "Airflow": servicios/airflow.md
+     - "MinIO": servicios/minio.md
