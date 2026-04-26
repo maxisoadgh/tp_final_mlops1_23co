@@ -6,12 +6,12 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Plataforma de entrenamiento y serving de modelos ML — satisfacción de pasajeros de aerolíneas" name="description"/>
-<link href="https://maxisoadgh.github.io/tp_final_mlops1_23co/servicios/mlflow/" rel="canonical"/>
-<link href="../streamlit/" rel="prev"/>
-<link href="../airflow/" rel="next"/>
+<link href="https://maxisoadgh.github.io/tp_final_mlops1_23co/servicios/streamlit/" rel="canonical"/>
+<link href="../api/" rel="prev"/>
+<link href="../mlflow/" rel="next"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
-<title>MLflow - MLOps TP Final</title>
+<title>Streamlit - MLOps TP Final</title>
 <link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -25,7 +25,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#mlflow-tracking-model-registry">
+<a class="md-skip" href="#streamlit-frontend-de-prediccion">
           Saltar a contenido
         </a>
 </div>
@@ -49,7 +49,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              MLflow
+              Streamlit
             
           </span>
 </div>
@@ -352,25 +352,13 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../streamlit/">
-<span class="md-ellipsis">
-    
-  
-    Streamlit
-  
-
-    
-  </span>
-</a>
-</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
     
   
-    MLflow
+    Streamlit
   
 
     
@@ -381,7 +369,7 @@
 <span class="md-ellipsis">
     
   
-    MLflow
+    Streamlit
   
 
     
@@ -394,15 +382,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#configuracion">
-<span class="md-ellipsis">
-      
-        Configuración
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#acceso">
 <span class="md-ellipsis">
       
@@ -412,52 +391,64 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#experimento-y-modelo-registrado">
+<a class="md-nav__link" href="#que-hace">
 <span class="md-ellipsis">
       
-        Experimento y modelo registrado
+        ¿Qué hace?
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#variables-de-airflow">
+<a class="md-nav__link" href="#configuracion">
 <span class="md-ellipsis">
       
-        Variables de Airflow
+        Configuración
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#estructura-de-runs">
+<a class="md-nav__link" href="#dependencias">
 <span class="md-ellipsis">
       
-        Estructura de runs
+        Dependencias
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#artefacto-feature_columnsjson">
+<a class="md-nav__link" href="#agregar-paquetes">
 <span class="md-ellipsis">
       
-        Artefacto feature_columns.json
+        Agregar paquetes
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#ciclo-de-vida-del-modelo">
+<a class="md-nav__link" href="#flujo-de-uso">
 <span class="md-ellipsis">
       
-        Ciclo de vida del modelo
+        Flujo de uso
       
     </span>
 </a>
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mlflow/">
+<span class="md-ellipsis">
+    
+  
+    MLflow
+  
+
+    
+  </span>
+</a>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../airflow/">
@@ -641,15 +632,6 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#configuracion">
-<span class="md-ellipsis">
-      
-        Configuración
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
 <a class="md-nav__link" href="#acceso">
 <span class="md-ellipsis">
       
@@ -659,46 +641,46 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#experimento-y-modelo-registrado">
+<a class="md-nav__link" href="#que-hace">
 <span class="md-ellipsis">
       
-        Experimento y modelo registrado
+        ¿Qué hace?
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#variables-de-airflow">
+<a class="md-nav__link" href="#configuracion">
 <span class="md-ellipsis">
       
-        Variables de Airflow
+        Configuración
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#estructura-de-runs">
+<a class="md-nav__link" href="#dependencias">
 <span class="md-ellipsis">
       
-        Estructura de runs
+        Dependencias
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#artefacto-feature_columnsjson">
+<a class="md-nav__link" href="#agregar-paquetes">
 <span class="md-ellipsis">
       
-        Artefacto feature_columns.json
+        Agregar paquetes
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#ciclo-de-vida-del-modelo">
+<a class="md-nav__link" href="#flujo-de-uso">
 <span class="md-ellipsis">
       
-        Ciclo de vida del modelo
+        Flujo de uso
       
     </span>
 </a>
@@ -710,121 +692,67 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="mlflow-tracking-model-registry">MLflow — Tracking &amp; Model Registry<a class="headerlink" href="#mlflow-tracking-model-registry" title="Permanent link">¶</a></h1>
-<h2 id="configuracion">Configuración<a class="headerlink" href="#configuracion" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Backend</th>
-<th>Tecnología</th>
-<th>Qué guarda</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Backend store</strong></td>
-<td>PostgreSQL (<code>mlflow_db</code>)</td>
-<td>Runs, parámetros, métricas, tags</td>
-</tr>
-<tr>
-<td><strong>Artifact store</strong></td>
-<td>MinIO (<code>s3://mlflow/</code>)</td>
-<td>Modelos, <code>feature_columns.json</code></td>
-</tr>
-</tbody>
-</table>
+<h1 id="streamlit-frontend-de-prediccion">Streamlit — Frontend de predicción<a class="headerlink" href="#streamlit-frontend-de-prediccion" title="Permanent link">¶</a></h1>
+<p>Interfaz web para interactuar con el modelo sin necesidad de usar curl o Swagger. Consume la FastAPI internamente.</p>
 <h2 id="acceso">Acceso<a class="headerlink" href="#acceso" title="Permanent link">¶</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>http://localhost:5000
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>http://localhost:8501
 </span></code></pre></div>
+<hr/>
+<h2 id="que-hace">¿Qué hace?<a class="headerlink" href="#que-hace" title="Permanent link">¶</a></h2>
+<ul>
+<li>Formulario con los 22 campos del pasajero organizados en 3 columnas</li>
+<li>Botón <strong>Predecir</strong> que llama a <code>POST /api:8000/predict</code></li>
+<li>Resultado con el label (<code>satisfied</code> / <code>neutral or dissatisfied</code>) y la probabilidad en una barra visual</li>
+<li>Sidebar con el estado de la API y botón para <strong>recargar el modelo</strong> (<code>POST /reload</code>) sin reiniciar contenedores</li>
+<li>Checkbox <strong>Cargar ejemplo</strong> para pre-llenar el formulario con valores de prueba</li>
+<li>Expanders con el payload enviado y la respuesta raw de la API</li>
+</ul>
+<hr/>
+<h2 id="configuracion">Configuración<a class="headerlink" href="#configuracion" title="Permanent link">¶</a></h2>
+<div class="language-python highlight"><span class="filename">streamlit/streamlit_app.py</span><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">API_BASE_URL</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">"API_BASE_URL"</span><span class="p">,</span> <span class="s2">"http://localhost:8000"</span><span class="p">)</span>
+</span></code></pre></div>
+<p>Dentro de Docker, la variable de entorno <code>API_BASE_URL=http://api:8000</code> apunta directamente al contenedor de FastAPI por la red interna <code>backend</code>.</p>
+<div class="language-toml highlight"><span class="filename">streamlit/.streamlit/config.toml</span><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">[theme]</span>
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="n">base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"dark"</span>
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="n">primaryColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#2563eb"</span>
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="n">backgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#0f172a"</span>
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="n">secondaryBackgroundColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#111827"</span>
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="n">textColor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"#f8fafc"</span>
+</span></code></pre></div>
+<hr/>
+<h2 id="dependencias">Dependencias<a class="headerlink" href="#dependencias" title="Permanent link">¶</a></h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>streamlit
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>requests
+</span></code></pre></div>
+<hr/>
+<h2 id="agregar-paquetes">Agregar paquetes<a class="headerlink" href="#agregar-paquetes" title="Permanent link">¶</a></h2>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># 1. Editar dockerfiles/streamlit/requirements.txt</span>
+</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="c1"># 2. Reconstruir:</span>
+</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>docker<span class="w"> </span>compose<span class="w"> </span>build<span class="w"> </span>streamlit
+</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>streamlit
+</span></code></pre></div>
+<hr/>
+<h2 id="flujo-de-uso">Flujo de uso<a class="headerlink" href="#flujo-de-uso" title="Permanent link">¶</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+    participant U as Usuario
+    participant ST as Streamlit :8501
+    participant API as FastAPI :8000
+
+    U-&gt;&gt;ST: Completa el formulario
+    U-&gt;&gt;ST: Click "Predecir"
+    ST-&gt;&gt;API: POST /predict {features}
+    API--&gt;&gt;ST: {prediction, probability, model_version}
+    ST--&gt;&gt;U: Resultado + barra de probabilidad
+
+    Note over U,ST: Sidebar
+    U-&gt;&gt;ST: Click "Recargar modelo"
+    ST-&gt;&gt;API: POST /reload
+    API--&gt;&gt;ST: {status, model_loaded}
+    ST--&gt;&gt;U: Confirmación</code></pre>
 <div class="admonition warning">
-<p class="admonition-title">Desde código Python</p>
-<p>Nunca usar <code>http://mlflow:5000</code> directamente. Siempre usar el proxy:
-<code>MLFLOW_TRACKING_URI=http://mlflow-proxy:5001</code>
-Ver <a href="../../arquitectura/mlflow-proxy/">workaround →</a></p>
+<p class="admonition-title">Requiere modelo entrenado</p>
+<p>Si la FastAPI no tiene un modelo cargado (porque el DAG todavía no corrió), Streamlit muestra el warning <code>"API disponible pero sin modelo cargado"</code> en el sidebar y la predicción falla. Correr primero el DAG <code>airline_satisfaction_training</code> en Airflow.</p>
 </div>
-<hr/>
-<h2 id="experimento-y-modelo-registrado">Experimento y modelo registrado<a class="headerlink" href="#experimento-y-modelo-registrado" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Constante (<code>src/config.py</code>)</th>
-<th>Valor</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>EXPERIMENT_NAME</code></td>
-<td><code>"airline-satisfaction"</code></td>
-</tr>
-<tr>
-<td><code>REGISTERED_MODEL_NAME</code></td>
-<td><code>"airline-satisfaction-best"</code></td>
-</tr>
-</tbody>
-</table>
-<hr/>
-<h2 id="variables-de-airflow">Variables de Airflow<a class="headerlink" href="#variables-de-airflow" title="Permanent link">¶</a></h2>
-<p>Las variables de MLflow se configuran en <code>airflow/secrets/variables.yaml</code> y son accesibles desde los DAGs:</p>
-<div class="language-yaml highlight"><span class="filename">airflow/secrets/variables.yaml</span><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">mlflow_tracking_uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://mlflow-proxy:5001"</span>
-</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">mlflow_experiment_name</span><span class="p">:</span><span class="w"> </span><span class="s">"airline-satisfaction"</span>
-</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nt">registered_model_name</span><span class="p">:</span><span class="w"> </span><span class="s">"airline-satisfaction-best"</span>
-</span></code></pre></div>
-<hr/>
-<h2 id="estructura-de-runs">Estructura de runs<a class="headerlink" href="#estructura-de-runs" title="Permanent link">¶</a></h2>
-<p>Cada ejecución del DAG genera <strong>4 runs padre</strong> con <strong>runs anidados</strong> por trial de Optuna:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>Experimento: airline-satisfaction
-</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>├── Run: LogisticRegression
-</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>│   └── (autolog: params + model)
-</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>├── Run: KNN
-</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>│   ├── Run: trial_0  → f1_cv, n_neighbors, weights, p
-</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>│   └── ... (N_TRIALS runs)
-</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>├── Run: RandomForest
-</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>│   ├── Run: trial_0  → f1_cv, n_estimators, max_depth...
-</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>│   └── ...
-</span><span id="__span-2-10"><a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a>└── Run: XGBoost
-</span><span id="__span-2-11"><a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a>    ├── Run: trial_0  → f1_cv, learning_rate, gamma...
-</span><span id="__span-2-12"><a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a>    └── ...
-</span></code></pre></div>
-<p>Métricas registradas por run padre:</p>
-<table>
-<thead>
-<tr>
-<th>Métrica</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>best_f1</code></td>
-<td>Mejor F1 de Optuna (sobre validación cruzada)</td>
-</tr>
-<tr>
-<td><code>test_f1</code></td>
-<td>F1 sobre el test set con el mejor modelo</td>
-</tr>
-<tr>
-<td><code>f1_cv</code></td>
-<td>F1 de cada trial (en runs anidados)</td>
-</tr>
-</tbody>
-</table>
-<hr/>
-<h2 id="artefacto-feature_columnsjson">Artefacto <code>feature_columns.json</code><a class="headerlink" href="#artefacto-feature_columnsjson" title="Permanent link">¶</a></h2>
-<p>Cada run guarda la lista exacta de columnas post-<code>get_dummies</code>. La API lo descarga al cargar el modelo para garantizar consistencia:</p>
-<div class="language-python highlight"><span class="filename">src/mlflow_utils.py — log_feature_columns()</span><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">log_feature_columns</span><span class="p">(</span><span class="n">columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
-</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s2">"feature_columns.json"</span><span class="p">)</span>
-</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
-</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-</span></code></pre></div>
-<hr/>
-<h2 id="ciclo-de-vida-del-modelo">Ciclo de vida del modelo<a class="headerlink" href="#ciclo-de-vida-del-modelo" title="Permanent link">¶</a></h2>
-<pre class="mermaid"><code>stateDiagram-v2
-    [*] --&gt; Registrado : DAG → register_best_model()
-    Registrado --&gt; NuevaVersion : DAG siguiente
-    NuevaVersion --&gt; [*] : API hace POST /reload</code></pre>
-<p>La API siempre toma la versión con el número más alto — no requiere promotion manual a <code>Production</code>.</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -836,7 +764,7 @@ Ver <a href="../../arquitectura/mlflow-proxy/">workaround →</a></p>
 </main>
 <footer class="md-footer">
 <nav aria-label="Pie" class="md-footer__inner md-grid">
-<a aria-label="Anterior: Streamlit" class="md-footer__link md-footer__link--prev" href="../streamlit/">
+<a aria-label="Anterior: FastAPI" class="md-footer__link md-footer__link--prev" href="../api/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -845,17 +773,17 @@ Ver <a href="../../arquitectura/mlflow-proxy/">workaround →</a></p>
                 Anterior
               </span>
 <div class="md-ellipsis">
-                Streamlit
+                FastAPI
               </div>
 </div>
 </a>
-<a aria-label="Siguiente: Airflow" class="md-footer__link md-footer__link--next" href="../airflow/">
+<a aria-label="Siguiente: MLflow" class="md-footer__link md-footer__link--next" href="../mlflow/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Siguiente
               </span>
 <div class="md-ellipsis">
-                Airflow
+                MLflow
               </div>
 </div>
 <div class="md-footer__button md-icon">
