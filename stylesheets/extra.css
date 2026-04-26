@@ -1,3 +1,8 @@
+/* ─── Ocultar site name del header ─────────────────── */
+.md-header__title .md-header__topic:first-child {
+  display: none;
+}
+
 /* ─── Hero ─────────────────────────────────────────── */
 .md-typeset .hero {
   background: linear-gradient(135deg, #1a0533 0%, #2d1b69 50%, #1565c0 100%);
@@ -35,7 +40,7 @@
 /* ─── Service cards ─────────────────────────────────── */
 .md-typeset .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
   margin: 1.5rem 0;
 }
@@ -57,7 +62,7 @@
 /* ─── Team cards ─────────────────────────────────────── */
 .md-typeset .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1rem;
   margin: 1.5rem 0;
 }
@@ -81,9 +86,3 @@
 
 /* ─── Mermaid centrado ──────────────────────────────── */
 .mermaid { text-align: center; margin: 1.5rem 0; }
-
-
-/* ─── Ocultar site name del header ─────────────────── */
-.md-header__title .md-header__topic:first-child {
-  display: none;
-}

@@ -5,13 +5,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Plataforma de entrenamiento y serving de modelos ML para el caso de satisfacción de aerolíneas — JupyterLab · MLflow · Airflow · MinIO · FastAPI" name="description"/>
-<link href="https://lilidl-nft.github.io/tp_final_mlops1_23co/servicios/mlflow/" rel="canonical"/>
+<meta content="Plataforma de entrenamiento y serving de modelos ML — satisfacción de pasajeros de aerolíneas" name="description"/>
+<link href="https://maxisoadgh.github.io/tp_final_mlops1_23co/servicios/mlflow/" rel="canonical"/>
 <link href="../api/" rel="prev"/>
 <link href="../airflow/" rel="next"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
-<title>MLflow (tracking) - MLOps TP Final</title>
+<title>MLflow - MLOps TP Final</title>
 <link href="../../assets/stylesheets/main.484c7ddc.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.ab4e12ef.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -49,19 +49,19 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              MLflow (tracking)
+              MLflow
             
           </span>
 </div>
 </div>
 </div>
 <form class="md-header__option" data-md-component="palette">
-<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
-<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<input aria-label="Modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Modo oscuro">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
 </label>
-<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
-<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<input aria-label="Modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Modo claro">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
 </label>
 </form>
@@ -98,12 +98,12 @@
 </div>
 </div>
 <div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/lilidl-nft/tp_final_mlops1_23co" title="Ir al repositorio">
+<a class="md-source" data-md-component="source" href="https://github.com/maxisoadgh/tp_final_mlops1_23co" title="Ir al repositorio">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
 </div>
 <div class="md-source__repository">
-    lilidl-nft/tp_final_mlops1_23co
+    tp_final_mlops1_23co
   </div>
 </a>
 </div>
@@ -195,12 +195,12 @@
     MLOps TP Final
   </label>
 <div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/lilidl-nft/tp_final_mlops1_23co" title="Ir al repositorio">
+<a class="md-source" data-md-component="source" href="https://github.com/maxisoadgh/tp_final_mlops1_23co" title="Ir al repositorio">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
 </div>
 <div class="md-source__repository">
-    lilidl-nft/tp_final_mlops1_23co
+    tp_final_mlops1_23co
   </div>
 </a>
 </div>
@@ -345,7 +345,7 @@
 <span class="md-ellipsis">
     
   
-    FastAPI (inferencia)
+    FastAPI
   
 
     
@@ -358,7 +358,7 @@
 <span class="md-ellipsis">
     
   
-    MLflow (tracking)
+    MLflow
   
 
     
@@ -369,7 +369,7 @@
 <span class="md-ellipsis">
     
   
-    MLflow (tracking)
+    MLflow
   
 
     
@@ -400,19 +400,28 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#experimento-y-modelo">
+<a class="md-nav__link" href="#experimento-y-modelo-registrado">
 <span class="md-ellipsis">
       
-        Experimento y modelo
+        Experimento y modelo registrado
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#estructura-de-runs-en-mlflow">
+<a class="md-nav__link" href="#variables-de-airflow">
 <span class="md-ellipsis">
       
-        Estructura de runs en MLflow
+        Variables de Airflow
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estructura-de-runs">
+<span class="md-ellipsis">
+      
+        Estructura de runs
       
     </span>
 </a>
@@ -435,15 +444,6 @@
     </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#uso-desde-notebooks">
-<span class="md-ellipsis">
-      
-        Uso desde notebooks
-      
-    </span>
-</a>
-</li>
 </ul>
 </nav>
 </li>
@@ -452,7 +452,7 @@
 <span class="md-ellipsis">
     
   
-    Airflow (orquestación)
+    Airflow
   
 
     
@@ -464,7 +464,7 @@
 <span class="md-ellipsis">
     
   
-    MinIO (artifact store)
+    MinIO
   
 
     
@@ -513,18 +513,6 @@
 
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../modelo/dataset/">
-<span class="md-ellipsis">
-    
-  
-    Dataset: satisfacción aerolíneas
-  
-
-    
-  </span>
-</a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../modelo/pipeline/">
 <span class="md-ellipsis">
@@ -659,19 +647,28 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#experimento-y-modelo">
+<a class="md-nav__link" href="#experimento-y-modelo-registrado">
 <span class="md-ellipsis">
       
-        Experimento y modelo
+        Experimento y modelo registrado
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#estructura-de-runs-en-mlflow">
+<a class="md-nav__link" href="#variables-de-airflow">
 <span class="md-ellipsis">
       
-        Estructura de runs en MLflow
+        Variables de Airflow
+      
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#estructura-de-runs">
+<span class="md-ellipsis">
+      
+        Estructura de runs
       
     </span>
 </a>
@@ -690,15 +687,6 @@
 <span class="md-ellipsis">
       
         Ciclo de vida del modelo
-      
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#uso-desde-notebooks">
-<span class="md-ellipsis">
-      
-        Uso desde notebooks
       
     </span>
 </a>
@@ -729,28 +717,21 @@
 <tr>
 <td><strong>Artifact store</strong></td>
 <td>MinIO (<code>s3://mlflow/</code>)</td>
-<td>Modelos serializados, <code>feature_columns.json</code></td>
+<td>Modelos, <code>feature_columns.json</code></td>
 </tr>
 </tbody>
 </table>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1"># Comando de arranque:</span>
-</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>mlflow<span class="w"> </span>server<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span>--backend-store-uri<span class="w"> </span>postgresql://postgres:postgres@postgres:5432/mlflow_db<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span>--host<span class="w"> </span><span class="m">0</span>.0.0.0<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">  </span>--default-artifact-root<span class="w"> </span>s3://mlflow/
-</span></code></pre></div>
 <h2 id="acceso">Acceso<a class="headerlink" href="#acceso" title="Permanent link">¶</a></h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>http://localhost:5000
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>http://localhost:5000
 </span></code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">Desde código Python dentro de contenedores</p>
-<p><strong>No</strong> usar <code>http://mlflow:5000</code> directamente. Siempre usar el proxy:
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>MLFLOW_TRACKING_URI=http://mlflow-proxy:5001
-</span></code></pre></div>
-Ver <a href="../../arquitectura/mlflow-proxy/">workaround del proxy →</a></p>
+<p class="admonition-title">Desde código Python</p>
+<p>Nunca usar <code>http://mlflow:5000</code> directamente. Siempre usar el proxy:
+<code>MLFLOW_TRACKING_URI=http://mlflow-proxy:5001</code>
+Ver <a href="../../arquitectura/mlflow-proxy/">workaround →</a></p>
 </div>
 <hr/>
-<h2 id="experimento-y-modelo">Experimento y modelo<a class="headerlink" href="#experimento-y-modelo" title="Permanent link">¶</a></h2>
+<h2 id="experimento-y-modelo-registrado">Experimento y modelo registrado<a class="headerlink" href="#experimento-y-modelo-registrado" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
@@ -770,23 +751,29 @@ Ver <a href="../../arquitectura/mlflow-proxy/">workaround del proxy →</a></p>
 </tbody>
 </table>
 <hr/>
-<h2 id="estructura-de-runs-en-mlflow">Estructura de runs en MLflow<a class="headerlink" href="#estructura-de-runs-en-mlflow" title="Permanent link">¶</a></h2>
-<p>Cada ejecución del DAG genera <strong>4 runs padre</strong> (uno por modelo) con <strong>runs anidados</strong> (uno por trial de Optuna):</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>Experimento: airline-satisfaction
-</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>├── Run: LogisticRegression
-</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>│   └── (autolog: params + model)
-</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>├── Run: KNN
-</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>│   ├── Run: trial_0
-</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>│   ├── Run: trial_1
-</span><span id="__span-3-7"><a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>│   └── ... (N_TRIALS runs)
-</span><span id="__span-3-8"><a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>├── Run: RandomForest
-</span><span id="__span-3-9"><a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>│   ├── Run: trial_0  
-</span><span id="__span-3-10"><a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>│   └── ...
-</span><span id="__span-3-11"><a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a>└── Run: XGBoost
-</span><span id="__span-3-12"><a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>    ├── Run: trial_0
-</span><span id="__span-3-13"><a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a>    └── ...
+<h2 id="variables-de-airflow">Variables de Airflow<a class="headerlink" href="#variables-de-airflow" title="Permanent link">¶</a></h2>
+<p>Las variables de MLflow se configuran en <code>airflow/secrets/variables.yaml</code> y son accesibles desde los DAGs:</p>
+<div class="language-yaml highlight"><span class="filename">airflow/secrets/variables.yaml</span><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">mlflow_tracking_uri</span><span class="p">:</span><span class="w"> </span><span class="s">"http://mlflow-proxy:5001"</span>
+</span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nt">mlflow_experiment_name</span><span class="p">:</span><span class="w"> </span><span class="s">"airline-satisfaction"</span>
+</span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="nt">registered_model_name</span><span class="p">:</span><span class="w"> </span><span class="s">"airline-satisfaction-best"</span>
 </span></code></pre></div>
-<p>Métricas loqueadas por cada run padre:</p>
+<hr/>
+<h2 id="estructura-de-runs">Estructura de runs<a class="headerlink" href="#estructura-de-runs" title="Permanent link">¶</a></h2>
+<p>Cada ejecución del DAG genera <strong>4 runs padre</strong> con <strong>runs anidados</strong> por trial de Optuna:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>Experimento: airline-satisfaction
+</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>├── Run: LogisticRegression
+</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>│   └── (autolog: params + model)
+</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>├── Run: KNN
+</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>│   ├── Run: trial_0  → f1_cv, n_neighbors, weights, p
+</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>│   └── ... (N_TRIALS runs)
+</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>├── Run: RandomForest
+</span><span id="__span-2-8"><a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>│   ├── Run: trial_0  → f1_cv, n_estimators, max_depth...
+</span><span id="__span-2-9"><a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a>│   └── ...
+</span><span id="__span-2-10"><a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a>└── Run: XGBoost
+</span><span id="__span-2-11"><a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a>    ├── Run: trial_0  → f1_cv, learning_rate, gamma...
+</span><span id="__span-2-12"><a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a>    └── ...
+</span></code></pre></div>
+<p>Métricas registradas por run padre:</p>
 <table>
 <thead>
 <tr>
@@ -797,7 +784,7 @@ Ver <a href="../../arquitectura/mlflow-proxy/">workaround del proxy →</a></p>
 <tbody>
 <tr>
 <td><code>best_f1</code></td>
-<td>Mejor F1 de los trials de Optuna (CV)</td>
+<td>Mejor F1 de Optuna (sobre validación cruzada)</td>
 </tr>
 <tr>
 <td><code>test_f1</code></td>
@@ -805,44 +792,27 @@ Ver <a href="../../arquitectura/mlflow-proxy/">workaround del proxy →</a></p>
 </tr>
 <tr>
 <td><code>f1_cv</code></td>
-<td>F1 de cada trial individual (en runs anidados)</td>
+<td>F1 de cada trial (en runs anidados)</td>
 </tr>
 </tbody>
 </table>
 <hr/>
 <h2 id="artefacto-feature_columnsjson">Artefacto <code>feature_columns.json</code><a class="headerlink" href="#artefacto-feature_columnsjson" title="Permanent link">¶</a></h2>
-<p>Cada run guarda la lista exacta de columnas que usó para entrenar. La API lo descarga al cargar el modelo para garantizar consistencia en el preprocessing:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="c1"># En training.py — después de entrenar cada modelo:</span>
-</span><span id="__span-4-2"><a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="n">log_feature_columns</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
-</span><span id="__span-4-3"><a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1"># → guarda feature_columns.json en MinIO junto al modelo</span>
-</span><span id="__span-4-4"><a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>
-</span><span id="__span-4-5"><a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="c1"># En api/main.py — al cargar el modelo:</span>
-</span><span id="__span-4-6"><a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="n">local_path</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">download_artifacts</span><span class="p">(</span><span class="n">run_id</span><span class="p">,</span> <span class="s2">"feature_columns.json"</span><span class="p">)</span>
-</span><span id="__span-4-7"><a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">local_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-</span><span id="__span-4-8"><a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>    <span class="n">feature_columns</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<p>Cada run guarda la lista exacta de columnas post-<code>get_dummies</code>. La API lo descarga al cargar el modelo para garantizar consistencia:</p>
+<div class="language-python highlight"><span class="filename">src/mlflow_utils.py — log_feature_columns()</span><pre><span></span><code><span id="__span-3-1"><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">log_feature_columns</span><span class="p">(</span><span class="n">columns</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="__span-3-2"><a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryDirectory</span><span class="p">()</span> <span class="k">as</span> <span class="n">tmp</span><span class="p">:</span>
+</span><span id="__span-3-3"><a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>        <span class="n">path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span> <span class="s2">"feature_columns.json"</span><span class="p">)</span>
+</span><span id="__span-3-4"><a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+</span><span id="__span-3-5"><a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">columns</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+</span><span id="__span-3-6"><a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>        <span class="n">mlflow</span><span class="o">.</span><span class="n">log_artifact</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 </span></code></pre></div>
 <hr/>
 <h2 id="ciclo-de-vida-del-modelo">Ciclo de vida del modelo<a class="headerlink" href="#ciclo-de-vida-del-modelo" title="Permanent link">¶</a></h2>
 <pre class="mermaid"><code>stateDiagram-v2
     [*] --&gt; Registrado : DAG → register_best_model()
-    Registrado --&gt; [*] : versión nueva supera a la anterior</code></pre>
-<p>El DAG usa <code>register_model()</code> de <code>src/mlflow_utils.py</code> y siempre crea una <strong>nueva versión</strong> del modelo <code>airline-satisfaction-best</code>. La API toma la versión con el número más alto (no requiere promotion manual a <code>Production</code>).</p>
-<hr/>
-<h2 id="uso-desde-notebooks">Uso desde notebooks<a class="headerlink" href="#uso-desde-notebooks" title="Permanent link">¶</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">mlflow</span>
-</span><span id="__span-5-2"><a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>
-</span><span id="__span-5-3"><a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1"># MLFLOW_TRACKING_URI ya viene de la variable de entorno</span>
-</span><span id="__span-5-4"><a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1"># No hace falta llamar a mlflow.set_tracking_uri()</span>
-</span><span id="__span-5-5"><a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>
-</span><span id="__span-5-6"><a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="k">with</span> <span class="n">mlflow</span><span class="o">.</span><span class="n">start_run</span><span class="p">(</span><span class="n">experiment_id</span><span class="o">=...</span><span class="p">,</span> <span class="n">run_name</span><span class="o">=</span><span class="s2">"mi_experimento"</span><span class="p">):</span>
-</span><span id="__span-5-7"><a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_params</span><span class="p">({</span><span class="s2">"n_estimators"</span><span class="p">:</span> <span class="mi">200</span><span class="p">})</span>
-</span><span id="__span-5-8"><a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">log_metric</span><span class="p">(</span><span class="s2">"f1_score"</span><span class="p">,</span> <span class="mf">0.91</span><span class="p">)</span>
-</span><span id="__span-5-9"><a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a>    <span class="n">mlflow</span><span class="o">.</span><span class="n">sklearn</span><span class="o">.</span><span class="n">log_model</span><span class="p">(</span>
-</span><span id="__span-5-10"><a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a>        <span class="n">model</span><span class="p">,</span>
-</span><span id="__span-5-11"><a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a>        <span class="n">artifact_path</span><span class="o">=</span><span class="s2">"model"</span><span class="p">,</span>
-</span><span id="__span-5-12"><a href="#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a>        <span class="n">registered_model_name</span><span class="o">=</span><span class="s2">"airline-satisfaction-best"</span>
-</span><span id="__span-5-13"><a href="#__codelineno-5-13" id="__codelineno-5-13" name="__codelineno-5-13"></a>    <span class="p">)</span>
-</span></code></pre></div>
+    Registrado --&gt; NuevaVersion : DAG siguiente
+    NuevaVersion --&gt; [*] : API hace POST /reload</code></pre>
+<p>La API siempre toma la versión con el número más alto — no requiere promotion manual a <code>Production</code>.</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -854,7 +824,7 @@ Ver <a href="../../arquitectura/mlflow-proxy/">workaround del proxy →</a></p>
 </main>
 <footer class="md-footer">
 <nav aria-label="Pie" class="md-footer__inner md-grid">
-<a aria-label="Anterior: FastAPI (inferencia)" class="md-footer__link md-footer__link--prev" href="../api/">
+<a aria-label="Anterior: FastAPI" class="md-footer__link md-footer__link--prev" href="../api/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -863,17 +833,17 @@ Ver <a href="../../arquitectura/mlflow-proxy/">workaround del proxy →</a></p>
                 Anterior
               </span>
 <div class="md-ellipsis">
-                FastAPI (inferencia)
+                FastAPI
               </div>
 </div>
 </a>
-<a aria-label="Siguiente: Airflow (orquestación)" class="md-footer__link md-footer__link--next" href="../airflow/">
+<a aria-label="Siguiente: Airflow" class="md-footer__link md-footer__link--next" href="../airflow/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Siguiente
               </span>
 <div class="md-ellipsis">
-                Airflow (orquestación)
+                Airflow
               </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -892,7 +862,7 @@ Ver <a href="../../arquitectura/mlflow-proxy/">workaround del proxy →</a></p>
     </a>
 </div>
 <div class="md-social">
-<a class="md-social__link" href="https://github.com/lilidl-nft/tp_final_mlops1_23co" rel="noopener" target="_blank" title="github.com">
+<a class="md-social__link" href="https://github.com/maxisoadgh/tp_final_mlops1_23co" rel="noopener" target="_blank" title="github.com">
 <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
 </a>
 </div>

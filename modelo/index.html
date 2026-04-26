@@ -5,10 +5,10 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Plataforma de entrenamiento y serving de modelos ML para el caso de satisfacción de aerolíneas — JupyterLab · MLflow · Airflow · MinIO · FastAPI" name="description"/>
-<link href="https://lilidl-nft.github.io/tp_final_mlops1_23co/modelo/" rel="canonical"/>
+<meta content="Plataforma de entrenamiento y serving de modelos ML — satisfacción de pasajeros de aerolíneas" name="description"/>
+<link href="https://maxisoadgh.github.io/tp_final_mlops1_23co/modelo/" rel="canonical"/>
 <link href="../servicios/jupyter/" rel="prev"/>
-<link href="dataset/" rel="next"/>
+<link href="pipeline/" rel="next"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.7.6" name="generator"/>
 <title>Dataset &amp; Modelo - MLOps TP Final</title>
@@ -56,12 +56,12 @@
 </div>
 </div>
 <form class="md-header__option" data-md-component="palette">
-<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
-<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<input aria-label="Modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Modo oscuro">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
 </label>
-<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
-<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<input aria-label="Modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Modo claro">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
 </label>
 </form>
@@ -98,12 +98,12 @@
 </div>
 </div>
 <div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/lilidl-nft/tp_final_mlops1_23co" title="Ir al repositorio">
+<a class="md-source" data-md-component="source" href="https://github.com/maxisoadgh/tp_final_mlops1_23co" title="Ir al repositorio">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
 </div>
 <div class="md-source__repository">
-    lilidl-nft/tp_final_mlops1_23co
+    tp_final_mlops1_23co
   </div>
 </a>
 </div>
@@ -195,12 +195,12 @@
     MLOps TP Final
   </label>
 <div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/lilidl-nft/tp_final_mlops1_23co" title="Ir al repositorio">
+<a class="md-source" data-md-component="source" href="https://github.com/maxisoadgh/tp_final_mlops1_23co" title="Ir al repositorio">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
 </div>
 <div class="md-source__repository">
-    lilidl-nft/tp_final_mlops1_23co
+    tp_final_mlops1_23co
   </div>
 </a>
 </div>
@@ -345,7 +345,7 @@
 <span class="md-ellipsis">
     
   
-    FastAPI (inferencia)
+    FastAPI
   
 
     
@@ -357,7 +357,7 @@
 <span class="md-ellipsis">
     
   
-    MLflow (tracking)
+    MLflow
   
 
     
@@ -369,7 +369,7 @@
 <span class="md-ellipsis">
     
   
-    Airflow (orquestación)
+    Airflow
   
 
     
@@ -381,7 +381,7 @@
 <span class="md-ellipsis">
     
   
-    MinIO (artifact store)
+    MinIO
   
 
     
@@ -430,18 +430,6 @@
 
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="dataset/">
-<span class="md-ellipsis">
-    
-  
-    Dataset: satisfacción aerolíneas
-  
-
-    
-  </span>
-</a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="pipeline/">
 <span class="md-ellipsis">
@@ -558,19 +546,19 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#dataset-satisfaccion-de-pasajeros-de-aerolineas">
+<a class="md-nav__link" href="#dataset">
 <span class="md-ellipsis">
       
-        Dataset: Satisfacción de pasajeros de aerolíneas
+        Dataset
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#columnas-del-dataset">
+<a class="md-nav__link" href="#columnas">
 <span class="md-ellipsis">
       
-        Columnas del dataset
+        Columnas
       
     </span>
 </a>
@@ -585,19 +573,19 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#modelos-entrenados">
+<a class="md-nav__link" href="#preprocessing">
 <span class="md-ellipsis">
       
-        Modelos entrenados
+        Preprocessing
       
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#metrica-de-seleccion">
+<a class="md-nav__link" href="#seleccion-del-mejor-modelo">
 <span class="md-ellipsis">
       
-        Métrica de selección
+        Selección del mejor modelo
       
     </span>
 </a>
@@ -610,49 +598,63 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="dataset-modelo">Dataset &amp; Modelo<a class="headerlink" href="#dataset-modelo" title="Permanent link">¶</a></h1>
-<h2 id="dataset-satisfaccion-de-pasajeros-de-aerolineas">Dataset: Satisfacción de pasajeros de aerolíneas<a class="headerlink" href="#dataset-satisfaccion-de-pasajeros-de-aerolineas" title="Permanent link">¶</a></h2>
+<h2 id="dataset">Dataset<a class="headerlink" href="#dataset" title="Permanent link">¶</a></h2>
 <p><strong>Fuente:</strong> <a href="https://www.kaggle.com/datasets/teejmahal20/airline-passenger-satisfaction">Airline Passenger Satisfaction — Kaggle</a></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>datasets/aerolineas/
-</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>├── train.csv   # ~103.900 filas
-</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>└── test.csv    # ~25.900 filas
-</span></code></pre></div>
-<p><strong>Variable target:</strong> <code>satisfaction</code> → <code>"satisfied"</code> (positivo) / <code>"neutral or dissatisfied"</code> (negativo)</p>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Filas aprox.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>datasets/aerolineas/train.csv</code></td>
+<td>~103.900</td>
+</tr>
+<tr>
+<td><code>datasets/aerolineas/test.csv</code></td>
+<td>~25.900</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Target:</strong> <code>satisfaction</code> → <code>"satisfied"</code> (1) / <code>"neutral or dissatisfied"</code> (0)</p>
+<p><strong>Limpieza:</strong> Se eliminan filas con nulos en <code>Arrival Delay in Minutes</code> (~0.3% del dataset) y la columna <code>id</code>.</p>
 <hr/>
-<h2 id="columnas-del-dataset">Columnas del dataset<a class="headerlink" href="#columnas-del-dataset" title="Permanent link">¶</a></h2>
-<p>Definidas en <code>src/config.py</code>:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Categóricas</label><label for="__tabbed_1_2">Numéricas</label><label for="__tabbed_1_3">Ratings de servicio (0–5)</label><label for="__tabbed_1_4">Columnas descartadas</label></div>
+<h2 id="columnas">Columnas<a class="headerlink" href="#columnas" title="Permanent link">¶</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Categóricas</label><label for="__tabbed_1_2">Numéricas</label><label for="__tabbed_1_3">Ratings (0–5)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p>Se aplica <code>OneHotEncoding</code> en el preprocessing:</p>
+<p>Se aplica <code>pd.get_dummies(..., drop_first=True)</code> en <code>data_loader.py</code>:</p>
 <table>
 <thead>
 <tr>
 <th>Columna</th>
-<th>Descripción</th>
+<th>Valores</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>Gender</code></td>
-<td><code>Male</code> / <code>Female</code></td>
+<td><code>Male</code>, <code>Female</code></td>
 </tr>
 <tr>
 <td><code>Customer Type</code></td>
-<td><code>Loyal Customer</code> / <code>disloyal Customer</code></td>
+<td><code>Loyal Customer</code>, <code>disloyal Customer</code></td>
 </tr>
 <tr>
 <td><code>Type of Travel</code></td>
-<td><code>Business travel</code> / <code>Personal Travel</code></td>
+<td><code>Business travel</code>, <code>Personal Travel</code></td>
 </tr>
 <tr>
 <td><code>Class</code></td>
-<td><code>Business</code> / <code>Eco</code> / <code>Eco Plus</code></td>
+<td><code>Business</code>, <code>Eco</code>, <code>Eco Plus</code></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="tabbed-block">
-<p>Se aplica <code>StandardScaler</code>:</p>
+<p><code>StandardScaler</code> en el <code>ColumnTransformer</code>:</p>
 <table>
 <thead>
 <tr>
@@ -667,7 +669,7 @@
 </tr>
 <tr>
 <td><code>Flight Distance</code></td>
-<td>Distancia del vuelo (millas)</td>
+<td>Distancia en millas</td>
 </tr>
 <tr>
 <td><code>Departure Delay in Minutes</code></td>
@@ -681,7 +683,7 @@
 </table>
 </div>
 <div class="tabbed-block">
-<p>Sin transformación para árbol / se escala solo para KNN:</p>
+<p><code>MinMaxScaler</code> en el <code>ColumnTransformer</code>:</p>
 <table>
 <thead>
 <tr>
@@ -734,85 +736,36 @@
 </tbody>
 </table>
 </div>
-<div class="tabbed-block">
-<table>
-<thead>
-<tr>
-<th>Columna</th>
-<th>Motivo</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>id</code></td>
-<td>Identificador sin valor predictivo</td>
-</tr>
-</tbody>
-</table>
 </div>
-</div>
-</input></input></input></input></div>
+</input></input></input></div>
 <hr/>
 <h2 id="pipeline-de-entrenamiento">Pipeline de entrenamiento<a class="headerlink" href="#pipeline-de-entrenamiento" title="Permanent link">¶</a></h2>
 <pre class="mermaid"><code>flowchart LR
-    A["📄 train.csv\ntest.csv"] --&gt; B["data_loader.py\nload_dataset()\nprepare_features_target()"]
-    B --&gt; C["preprocessing.py\nbuild_preprocessor()\nColumnTransformer"]
+    A["train.csv\ntest.csv"] --&gt; B["data_loader.py\nload_dataset()\nprepare_features_target()\nget_dummies()"]
+    B --&gt; C["preprocessing.py\nbuild_preprocessor()\nStandardScaler + MinMaxScaler"]
     C --&gt; D["training.py\n4 modelos en paralelo\n+ Optuna"]
-    D --&gt; E["evaluation.py\nselect_best_run()\npor F1 score"]
-    E --&gt; F["mlflow_utils.py\nregister_model()\nModel Registry"]</code></pre>
+    D --&gt; E["evaluation.py\nselect_best_run()\npor test_f1"]
+    E --&gt; F["mlflow_utils.py\nregister_model()\nMLflow Registry"]</code></pre>
 <hr/>
-<h2 id="modelos-entrenados">Modelos entrenados<a class="headerlink" href="#modelos-entrenados" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Modelo</th>
-<th>Optuna</th>
-<th>Scaling</th>
-<th>Notas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>LogisticRegressionCV</code></td>
-<td>No (CV interno)</td>
-<td>Sí (Pipeline)</td>
-<td><code>cv=10</code>, <code>max_iter=1000</code></td>
-</tr>
-<tr>
-<td><code>KNeighborsClassifier</code></td>
-<td>Sí (10 trials)</td>
-<td>Sí (previo a Optuna)</td>
-<td>Sensible a escala</td>
-</tr>
-<tr>
-<td><code>RandomForestClassifier</code></td>
-<td>Sí (10 trials)</td>
-<td>No</td>
-<td>Árboles no requieren scaling</td>
-</tr>
-<tr>
-<td><code>XGBClassifier</code></td>
-<td>Sí (10 trials)</td>
-<td>No</td>
-<td>Early stopping + MedianPruner</td>
-</tr>
-</tbody>
-</table>
+<h2 id="preprocessing">Preprocessing<a class="headerlink" href="#preprocessing" title="Permanent link">¶</a></h2>
+<div class="language-python highlight"><span class="filename">src/preprocessing.py — build_preprocessor()</span><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">build_preprocessor</span><span class="p">(</span><span class="n">numeric_cols</span><span class="p">,</span> <span class="n">rating_cols</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ColumnTransformer</span><span class="p">:</span>
+</span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="k">return</span> <span class="n">ColumnTransformer</span><span class="p">([</span>
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>        <span class="p">(</span><span class="s2">"scaler"</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">numeric_cols</span><span class="p">),</span>   <span class="c1"># Age, Distance, Delays</span>
+</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>        <span class="p">(</span><span class="s2">"minmax"</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">(),</span> <span class="n">rating_cols</span><span class="p">),</span>       <span class="c1"># 14 ratings (0-5)</span>
+</span><span id="__span-0-5"><a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>    <span class="p">])</span>
+</span></code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">KNN vs árboles</p>
+<p>KNN aplica el preprocessor <strong>antes</strong> de Optuna (sensible a escala).
+RandomForest y XGBoost no aplican scaling (los árboles son invariantes a la escala).
+LogisticRegression incluye el preprocessor dentro de un <code>Pipeline</code> de sklearn.</p>
+</div>
 <hr/>
-<h2 id="metrica-de-seleccion">Métrica de selección<a class="headerlink" href="#metrica-de-seleccion" title="Permanent link">¶</a></h2>
-<p>El mejor modelo se selecciona por <strong>F1 score sobre el test set</strong> (<code>test_f1</code>). Si empatan, gana el primero en la lista (orden de <code>results</code>).</p>
-<div class="language-python highlight"><span class="filename">src/evaluation.py</span><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">select_best_run</span><span class="p">(</span><span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<h2 id="seleccion-del-mejor-modelo">Selección del mejor modelo<a class="headerlink" href="#seleccion-del-mejor-modelo" title="Permanent link">¶</a></h2>
+<div class="language-python highlight"><span class="filename">src/evaluation.py — select_best_run()</span><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">select_best_run</span><span class="p">(</span><span class="n">results</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
 </span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>    <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="p">[</span><span class="s2">"f1_score"</span><span class="p">])</span>
 </span></code></pre></div>
-<p>Métricas calculadas para análisis (no para selección):</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">compute_metrics</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-</span><span id="__span-2-2"><a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>    <span class="k">return</span> <span class="p">{</span>
-</span><span id="__span-2-3"><a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>        <span class="s2">"precision"</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
-</span><span id="__span-2-4"><a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>        <span class="s2">"recall"</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
-</span><span id="__span-2-5"><a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>        <span class="s2">"f1"</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
-</span><span id="__span-2-6"><a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>        <span class="s2">"accuracy"</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
-</span><span id="__span-2-7"><a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>    <span class="p">}</span>
-</span></code></pre></div>
+<p>La métrica de selección es el <strong>F1 score sobre el test set</strong> (<code>test_f1</code>). El modelo ganador se registra en el MLflow Model Registry como <code>airline-satisfaction-best</code>.</p>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
@@ -837,13 +790,13 @@
               </div>
 </div>
 </a>
-<a aria-label="Siguiente: Dataset: satisfacción aerolíneas" class="md-footer__link md-footer__link--next" href="dataset/">
+<a aria-label="Siguiente: Pipeline de entrenamiento" class="md-footer__link md-footer__link--next" href="pipeline/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Siguiente
               </span>
 <div class="md-ellipsis">
-                Dataset: satisfacción aerolíneas
+                Pipeline de entrenamiento
               </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -862,7 +815,7 @@
     </a>
 </div>
 <div class="md-social">
-<a class="md-social__link" href="https://github.com/lilidl-nft/tp_final_mlops1_23co" rel="noopener" target="_blank" title="github.com">
+<a class="md-social__link" href="https://github.com/maxisoadgh/tp_final_mlops1_23co" rel="noopener" target="_blank" title="github.com">
 <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
 </a>
 </div>

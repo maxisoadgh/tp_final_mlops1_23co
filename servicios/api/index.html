@@ -6,11 +6,11 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Plataforma de entrenamiento y serving de modelos ML para el caso de satisfacción de aerolíneas — JupyterLab · MLflow · Airflow · MinIO · FastAPI">
+        <meta name="description" content="Plataforma de entrenamiento y serving de modelos ML — satisfacción de pasajeros de aerolíneas">
       
       
       
-        <link rel="canonical" href="https://lilidl-nft.github.io/tp_final_mlops1_23co/servicios/api/">
+        <link rel="canonical" href="https://maxisoadgh.github.io/tp_final_mlops1_23co/servicios/api/">
       
       
         <link rel="prev" href="../">
@@ -27,7 +27,7 @@
     
     
       
-        <title>FastAPI (inferencia) - MLOps TP Final</title>
+        <title>FastAPI - MLOps TP Final</title>
       
     
     
@@ -116,7 +116,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              FastAPI (inferencia)
+              FastAPI
             
           </span>
         </div>
@@ -129,9 +129,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Modo oscuro"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Modo oscuro" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
       </label>
     
@@ -139,9 +139,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="indigo"  aria-label="Modo claro"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+      <label class="md-header__button md-icon" title="Modo claro" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
       </label>
     
@@ -198,13 +198,13 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/lilidl-nft/tp_final_mlops1_23co" title="Ir al repositorio" class="md-source" data-md-component="source">
+        <a href="https://github.com/maxisoadgh/tp_final_mlops1_23co" title="Ir al repositorio" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
-    lilidl-nft/tp_final_mlops1_23co
+    tp_final_mlops1_23co
   </div>
 </a>
       </div>
@@ -386,13 +386,13 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/lilidl-nft/tp_final_mlops1_23co" title="Ir al repositorio" class="md-source" data-md-component="source">
+      <a href="https://github.com/maxisoadgh/tp_final_mlops1_23co" title="Ir al repositorio" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
   </div>
   <div class="md-source__repository">
-    lilidl-nft/tp_final_mlops1_23co
+    tp_final_mlops1_23co
   </div>
 </a>
     </div>
@@ -776,7 +776,7 @@
   <span class="md-ellipsis">
     
   
-    FastAPI (inferencia)
+    FastAPI
   
 
     
@@ -794,7 +794,7 @@
   <span class="md-ellipsis">
     
   
-    FastAPI (inferencia)
+    FastAPI
   
 
     
@@ -842,17 +842,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-health" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /health
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#post-predict" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -865,10 +854,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#features-de-entrada" class="md-nav__link">
+  <a href="#features-de-entrada-22-campos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Features de entrada
+        Features de entrada (22 campos)
       
     </span>
   </a>
@@ -876,10 +865,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejemplo-de-request" class="md-nav__link">
+  <a href="#ejemplo-completo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo de request
+        Ejemplo completo
       
     </span>
   </a>
@@ -899,6 +888,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /health
+      
+    </span>
+  </a>
   
 </li>
       
@@ -947,7 +947,7 @@
   <span class="md-ellipsis">
     
   
-    MLflow (tracking)
+    MLflow
   
 
     
@@ -975,7 +975,7 @@
   <span class="md-ellipsis">
     
   
-    Airflow (orquestación)
+    Airflow
   
 
     
@@ -1003,7 +1003,7 @@
   <span class="md-ellipsis">
     
   
-    MinIO (artifact store)
+    MinIO
   
 
     
@@ -1067,8 +1067,6 @@
       
         
       
-        
-      
     
     
     
@@ -1123,34 +1121,6 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../modelo/dataset/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Dataset: satisfacción aerolíneas
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
               
             
               
@@ -1447,17 +1417,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#get-health" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GET /health
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#post-predict" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1470,10 +1429,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#features-de-entrada" class="md-nav__link">
+  <a href="#features-de-entrada-22-campos" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Features de entrada
+        Features de entrada (22 campos)
       
     </span>
   </a>
@@ -1481,10 +1440,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#ejemplo-de-request" class="md-nav__link">
+  <a href="#ejemplo-completo" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Ejemplo de request
+        Ejemplo completo
       
     </span>
   </a>
@@ -1504,6 +1463,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-health" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GET /health
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1550,7 +1520,7 @@
 
 
 <h1 id="fastapi-serving-de-predicciones">FastAPI — Serving de predicciones<a class="headerlink" href="#fastapi-serving-de-predicciones" title="Permanent link">&para;</a></h1>
-<p>La API carga el modelo desde el <strong>MLflow Model Registry</strong> al arrancar y expone predicciones en tiempo real. Siempre usa la <strong>última versión registrada</strong> de <code>airline-satisfaction-best</code>.</p>
+<p>Al arrancar, la API carga automáticamente la <strong>última versión registrada</strong> de <code>airline-satisfaction-best</code> desde el MLflow Model Registry.</p>
 <h2 id="acceso">Acceso<a class="headerlink" href="#acceso" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1584,7 +1554,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><code>/</code></td>
-<td>Info de la API (nombre, versión)</td>
+<td>Info de la API</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
@@ -1594,7 +1564,7 @@
 <tr>
 <td><code>POST</code></td>
 <td><code>/reload</code></td>
-<td>Recarga el modelo desde MLflow sin reiniciar el contenedor</td>
+<td>Recarga el modelo desde MLflow sin reiniciar</td>
 </tr>
 <tr>
 <td><code>POST</code></td>
@@ -1604,19 +1574,8 @@
 </tbody>
 </table>
 <hr />
-<h2 id="get-health">GET /health<a class="headerlink" href="#get-health" title="Permanent link">&para;</a></h2>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;model_loaded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
-</span></code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">503 antes de entrenar</p>
-<p>Si el DAG todavía no corrió y no hay modelo registrado, <code>/predict</code> retorna <code>503</code>:
-<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Modelo no disponible. Ejecutar el DAG de entrenamiento antes.&quot;</span><span class="w"> </span><span class="p">}</span>
-</span></code></pre></div></p>
-</div>
-<hr />
 <h2 id="post-predict">POST /predict<a class="headerlink" href="#post-predict" title="Permanent link">&para;</a></h2>
-<h3 id="features-de-entrada">Features de entrada<a class="headerlink" href="#features-de-entrada" title="Permanent link">&para;</a></h3>
-<p>El request requiere 22 campos que describen al pasajero y su experiencia de vuelo.</p>
+<h3 id="features-de-entrada-22-campos">Features de entrada (22 campos)<a class="headerlink" href="#features-de-entrada-22-campos" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Categóricos</label><label for="__tabbed_1_2">Numéricos</label><label for="__tabbed_1_3">Ratings (0–5)</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1646,7 +1605,7 @@
 </tr>
 <tr>
 <td><code>travel_class</code></td>
-<td>Clase del ticket</td>
+<td>Clase</td>
 <td><code>"Business"</code> / <code>"Eco"</code> / <code>"Eco Plus"</code></td>
 </tr>
 </tbody>
@@ -1665,12 +1624,12 @@
 <tr>
 <td><code>age</code></td>
 <td><code>int</code> (0–120)</td>
-<td>Edad del pasajero</td>
+<td>Edad</td>
 </tr>
 <tr>
 <td><code>flight_distance</code></td>
 <td><code>int</code> ≥ 0</td>
-<td>Distancia del vuelo en millas</td>
+<td>Distancia en millas</td>
 </tr>
 <tr>
 <td><code>departure_delay_in_minutes</code></td>
@@ -1686,110 +1645,94 @@
 </table>
 </div>
 <div class="tabbed-block">
-<p>Catorce ratings de servicio, todos enteros de 0 a 5:</p>
 <table>
 <thead>
 <tr>
 <th>Campo</th>
-<th>Descripción</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>inflight_wifi_service</code></td>
-<td>WiFi a bordo</td>
 </tr>
 <tr>
 <td><code>departure_arrival_time_convenient</code></td>
-<td>Conveniencia del horario</td>
 </tr>
 <tr>
 <td><code>ease_of_online_booking</code></td>
-<td>Reserva online</td>
 </tr>
 <tr>
 <td><code>gate_location</code></td>
-<td>Ubicación de la puerta</td>
 </tr>
 <tr>
 <td><code>food_and_drink</code></td>
-<td>Comida y bebida</td>
 </tr>
 <tr>
 <td><code>online_boarding</code></td>
-<td>Embarque online</td>
 </tr>
 <tr>
 <td><code>seat_comfort</code></td>
-<td>Confort del asiento</td>
 </tr>
 <tr>
 <td><code>inflight_entertainment</code></td>
-<td>Entretenimiento</td>
 </tr>
 <tr>
 <td><code>on_board_service</code></td>
-<td>Servicio a bordo</td>
 </tr>
 <tr>
 <td><code>leg_room_service</code></td>
-<td>Espacio para piernas</td>
 </tr>
 <tr>
 <td><code>baggage_handling</code></td>
-<td>Manejo de equipaje</td>
 </tr>
 <tr>
 <td><code>checkin_service</code></td>
-<td>Check-in</td>
 </tr>
 <tr>
 <td><code>inflight_service</code></td>
-<td>Servicio en vuelo</td>
 </tr>
 <tr>
 <td><code>cleanliness</code></td>
-<td>Limpieza</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
-<h3 id="ejemplo-de-request">Ejemplo de request<a class="headerlink" href="#ejemplo-de-request" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/predict<span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="s1">    &quot;gender&quot;: &quot;Male&quot;,</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="s1">    &quot;customer_type&quot;: &quot;Loyal Customer&quot;,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s1">    &quot;age&quot;: 35,</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s1">    &quot;type_of_travel&quot;: &quot;Business travel&quot;,</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s1">    &quot;travel_class&quot;: &quot;Business&quot;,</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s1">    &quot;flight_distance&quot;: 1500,</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s1">    &quot;inflight_wifi_service&quot;: 4,</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s1">    &quot;departure_arrival_time_convenient&quot;: 4,</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s1">    &quot;ease_of_online_booking&quot;: 3,</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s1">    &quot;gate_location&quot;: 3,</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="s1">    &quot;food_and_drink&quot;: 4,</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="s1">    &quot;online_boarding&quot;: 5,</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="s1">    &quot;seat_comfort&quot;: 4,</span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="s1">    &quot;inflight_entertainment&quot;: 5,</span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="s1">    &quot;on_board_service&quot;: 4,</span>
-</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="s1">    &quot;leg_room_service&quot;: 4,</span>
-</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="s1">    &quot;baggage_handling&quot;: 5,</span>
-</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s1">    &quot;checkin_service&quot;: 4,</span>
-</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s1">    &quot;inflight_service&quot;: 4,</span>
-</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="s1">    &quot;cleanliness&quot;: 4,</span>
-</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="s1">    &quot;departure_delay_in_minutes&quot;: 0,</span>
-</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="s1">    &quot;arrival_delay_in_minutes&quot;: 0.0</span>
-</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="s1">  }&#39;</span>
+<h3 id="ejemplo-completo">Ejemplo completo<a class="headerlink" href="#ejemplo-completo" title="Permanent link">&para;</a></h3>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/predict<span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s1">    &quot;gender&quot;: &quot;Male&quot;,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s1">    &quot;customer_type&quot;: &quot;Loyal Customer&quot;,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s1">    &quot;age&quot;: 35,</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s1">    &quot;type_of_travel&quot;: &quot;Business travel&quot;,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="s1">    &quot;travel_class&quot;: &quot;Business&quot;,</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="s1">    &quot;flight_distance&quot;: 1500,</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="s1">    &quot;inflight_wifi_service&quot;: 4,</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="s1">    &quot;departure_arrival_time_convenient&quot;: 4,</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="s1">    &quot;ease_of_online_booking&quot;: 3,</span>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="s1">    &quot;gate_location&quot;: 3,</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s1">    &quot;food_and_drink&quot;: 4,</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s1">    &quot;online_boarding&quot;: 5,</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="s1">    &quot;seat_comfort&quot;: 4,</span>
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="s1">    &quot;inflight_entertainment&quot;: 5,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="s1">    &quot;on_board_service&quot;: 4,</span>
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s1">    &quot;leg_room_service&quot;: 4,</span>
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s1">    &quot;baggage_handling&quot;: 5,</span>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s1">    &quot;checkin_service&quot;: 4,</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s1">    &quot;inflight_service&quot;: 4,</span>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s1">    &quot;cleanliness&quot;: 4,</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="s1">    &quot;departure_delay_in_minutes&quot;: 0,</span>
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="s1">    &quot;arrival_delay_in_minutes&quot;: 0.0</span>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="s1">  }&#39;</span>
 </span></code></pre></div>
 <h3 id="response-200-ok">Response <code>200 OK</code><a class="headerlink" href="#response-200-ok" title="Permanent link">&para;</a></h3>
-<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">&quot;prediction&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;satisfied&quot;</span><span class="p">,</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">&quot;probability_satisfied&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9231</span><span class="p">,</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">&quot;model_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="p">}</span>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;prediction&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;satisfied&quot;</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;probability_satisfied&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.9231</span><span class="p">,</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;model_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3&quot;</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span>
 </span></code></pre></div>
 <table>
 <thead>
@@ -1805,17 +1748,27 @@
 </tr>
 <tr>
 <td><code>probability_satisfied</code></td>
-<td>Probabilidad de la clase positiva (0–1), calculada con <code>predict_proba</code> si el modelo lo soporta</td>
+<td>Probabilidad de la clase positiva (vía <code>predict_proba</code>)</td>
 </tr>
 <tr>
 <td><code>model_version</code></td>
-<td>Versión en el MLflow Registry</td>
+<td>Número de versión en MLflow Registry</td>
 </tr>
 </tbody>
 </table>
 <hr />
+<h2 id="get-health">GET /health<a class="headerlink" href="#get-health" title="Permanent link">&para;</a></h2>
+<div class="language-json highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ok&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;model_loaded&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">503 antes de correr el DAG</p>
+<p>Si no hay ningún modelo registrado en MLflow, <code>/predict</code> retorna <code>503</code>:
+<div class="language-json highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span><span class="w"> </span><span class="nt">&quot;detail&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Modelo no disponible. Ejecutar el DAG de entrenamiento antes.&quot;</span><span class="w"> </span><span class="p">}</span>
+</span></code></pre></div></p>
+</div>
+<hr />
 <h2 id="post-reload">POST /reload<a class="headerlink" href="#post-reload" title="Permanent link">&para;</a></h2>
-<p>Recarga el modelo desde Registry <strong>sin reiniciar el contenedor</strong>. Llamarlo después de que Airflow registre una nueva versión.</p>
+<p>Recarga el modelo sin reiniciar el contenedor. Útil después de que Airflow registra una nueva versión.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8000/reload
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># → {&quot;status&quot;: &quot;model reloaded&quot;, &quot;model_loaded&quot;: true}</span>
 </span></code></pre></div>
@@ -1832,14 +1785,15 @@
 </span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>    <span class="n">feature_columns</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </span></code></pre></div>
 <ol>
-<li>Toma la versión con el número más alto, no necesariamente la que está en stage <code>Production</code>.</li>
-<li><code>feature_columns.json</code> se guarda como artefacto en cada run de Airflow. Garantiza que el preprocessing use exactamente las mismas columnas con las que se entrenó.</li>
+<li>Toma la versión con el número más alto.</li>
+<li>Descarga <code>feature_columns.json</code> para garantizar que el preprocessing use exactamente las mismas columnas con las que se entrenó el modelo.</li>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Workflow completo</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Airflow DAG → MLflow Registry (nueva versión)
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                                    ↓
-</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>                      POST /reload → API usa el nuevo modelo
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>DAG airline_satisfaction_training
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    → MLflow Registry (nueva versión)
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        → POST /reload
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>            → API usa el nuevo modelo
 </span></code></pre></div>
 </div>
 
@@ -1894,13 +1848,13 @@
         
         
           
-          <a href="../mlflow/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: MLflow (tracking)">
+          <a href="../mlflow/" class="md-footer__link md-footer__link--next" aria-label="Siguiente: MLflow">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Siguiente
               </span>
               <div class="md-ellipsis">
-                MLflow (tracking)
+                MLflow
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1934,7 +1888,7 @@
       
       
     
-    <a href="https://github.com/lilidl-nft/tp_final_mlops1_23co" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+    <a href="https://github.com/maxisoadgh/tp_final_mlops1_23co" target="_blank" rel="noopener" title="github.com" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
     </a>
   

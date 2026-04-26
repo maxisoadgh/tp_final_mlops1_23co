@@ -5,8 +5,8 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<meta content="Plataforma de entrenamiento y serving de modelos ML para el caso de satisfacción de aerolíneas — JupyterLab · MLflow · Airflow · MinIO · FastAPI" name="description"/>
-<link href="https://lilidl-nft.github.io/tp_final_mlops1_23co/arquitectura/mlflow-proxy/" rel="canonical"/>
+<meta content="Plataforma de entrenamiento y serving de modelos ML — satisfacción de pasajeros de aerolíneas" name="description"/>
+<link href="https://maxisoadgh.github.io/tp_final_mlops1_23co/arquitectura/mlflow-proxy/" rel="canonical"/>
 <link href="../red/" rel="prev"/>
 <link href="../../servicios/" rel="next"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
@@ -56,12 +56,12 @@
 </div>
 </div>
 <form class="md-header__option" data-md-component="palette">
-<input aria-label="Cambiar a modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
-<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Cambiar a modo oscuro">
+<input aria-label="Modo oscuro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: light)" data-md-color-primary="deep-purple" data-md-color-scheme="default" id="__palette_0" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_1" hidden="" title="Modo oscuro">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
 </label>
-<input aria-label="Cambiar a modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
-<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Cambiar a modo claro">
+<input aria-label="Modo claro" class="md-option" data-md-color-accent="indigo" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-primary="deep-purple" data-md-color-scheme="slate" id="__palette_1" name="__palette" type="radio"/>
+<label class="md-header__button md-icon" for="__palette_0" hidden="" title="Modo claro">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
 </label>
 </form>
@@ -98,12 +98,12 @@
 </div>
 </div>
 <div class="md-header__source">
-<a class="md-source" data-md-component="source" href="https://github.com/lilidl-nft/tp_final_mlops1_23co" title="Ir al repositorio">
+<a class="md-source" data-md-component="source" href="https://github.com/maxisoadgh/tp_final_mlops1_23co" title="Ir al repositorio">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
 </div>
 <div class="md-source__repository">
-    lilidl-nft/tp_final_mlops1_23co
+    tp_final_mlops1_23co
   </div>
 </a>
 </div>
@@ -195,12 +195,12 @@
     MLOps TP Final
   </label>
 <div class="md-nav__source">
-<a class="md-source" data-md-component="source" href="https://github.com/lilidl-nft/tp_final_mlops1_23co" title="Ir al repositorio">
+<a class="md-source" data-md-component="source" href="https://github.com/maxisoadgh/tp_final_mlops1_23co" title="Ir al repositorio">
 <div class="md-source__icon md-icon">
 <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
 </div>
 <div class="md-source__repository">
-    lilidl-nft/tp_final_mlops1_23co
+    tp_final_mlops1_23co
   </div>
 </a>
 </div>
@@ -354,15 +354,6 @@
     </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#impacto-en-el-proyecto">
-<span class="md-ellipsis">
-      
-        Impacto en el proyecto
-      
-    </span>
-</a>
-</li>
 </ul>
 </nav>
 </li>
@@ -401,7 +392,7 @@
 <span class="md-ellipsis">
     
   
-    FastAPI (inferencia)
+    FastAPI
   
 
     
@@ -413,7 +404,7 @@
 <span class="md-ellipsis">
     
   
-    MLflow (tracking)
+    MLflow
   
 
     
@@ -425,7 +416,7 @@
 <span class="md-ellipsis">
     
   
-    Airflow (orquestación)
+    Airflow
   
 
     
@@ -437,7 +428,7 @@
 <span class="md-ellipsis">
     
   
-    MinIO (artifact store)
+    MinIO
   
 
     
@@ -486,18 +477,6 @@
 
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../modelo/dataset/">
-<span class="md-ellipsis">
-    
-  
-    Dataset: satisfacción aerolíneas
-  
-
-    
-  </span>
-</a>
-</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../modelo/pipeline/">
 <span class="md-ellipsis">
@@ -640,15 +619,6 @@
     </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#impacto-en-el-proyecto">
-<span class="md-ellipsis">
-      
-        Impacto en el proyecto
-      
-    </span>
-</a>
-</li>
 </ul>
 </nav>
 </div>
@@ -658,44 +628,37 @@
 <article class="md-content__inner md-typeset">
 <h1 id="workaround-mlflow-proxy-nginx">Workaround: MLflow proxy (nginx)<a class="headerlink" href="#workaround-mlflow-proxy-nginx" title="Permanent link">¶</a></h1>
 <h2 id="el-problema">El problema<a class="headerlink" href="#el-problema" title="Permanent link">¶</a></h2>
-<p>MLflow incluye una protección anti-DNS rebinding que rechaza cualquier request cuyo header <code>Host</code> no sea <code>localhost</code> o <code>127.0.0.1</code>. Esto impide que otros contenedores Docker se conecten directamente usando el nombre del servicio:</p>
+<p>MLflow incluye una protección anti-DNS rebinding que rechaza cualquier request cuyo header <code>Host</code> no sea <code>localhost</code> o <code>127.0.0.1</code>. Esto impide que otros contenedores Docker se conecten directamente:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a># Esto FALLA desde JupyterLab o Airflow:
 </span><span id="__span-0-2"><a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>MLFLOW_TRACKING_URI=http://mlflow:5000
-</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a># MLflow ve Host: mlflow → rechaza con 403
+</span><span id="__span-0-3"><a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a># MLflow ve Host: mlflow → rechaza con 403
 </span></code></pre></div>
 <h2 id="la-solucion">La solución<a class="headerlink" href="#la-solucion" title="Permanent link">¶</a></h2>
-<p>Se agrega un contenedor <code>mlflow-proxy</code> (nginx) que intercepta las requests y <strong>reescribe el header <code>Host: localhost</code></strong> antes de forwardearlas a MLflow:</p>
+<p>El contenedor <code>mlflow-proxy</code> (nginx) intercepta las requests y <strong>reescribe el header <code>Host: localhost</code></strong> antes de forwardearlas:</p>
 <pre class="mermaid"><code>flowchart LR
-    J[JupyterLab\nFastAPI\nAirflow] --&gt;|"http://mlflow-proxy:5001\nHost: mlflow-proxy"| N["nginx\n mlflow-proxy"]
-    N --&gt;|"http://mlflow:5000\nHost: localhost ✅"| M[MLflow]
-
-    style N fill:#fff9c4,stroke:#f9a825
-    style M fill:#e8f5e9,stroke:#388e3c</code></pre>
+    A["JupyterLab\nFastAPI\nAirflow worker"] --&gt;|"http://mlflow-proxy:5001"| N["nginx\nmlflow-proxy"]
+    N --&gt;|"http://mlflow:5000\nHost: localhost ✅"| M["MLflow"]
+    style N fill:#fef3c7,stroke:#d97706
+    style M fill:#d1fae5,stroke:#059669</code></pre>
 <h2 id="configuracion-nginx">Configuración nginx<a class="headerlink" href="#configuracion-nginx" title="Permanent link">¶</a></h2>
 <div class="language-nginx highlight"><span class="filename">nginx/mlflow.conf</span><pre><span></span><code><span id="__span-1-1"><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">5001</span><span class="p">;</span>
 </span><span id="__span-1-3"><a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>
 </span><span id="__span-1-4"><a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-5"><a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w">         </span><span class="s">http://mlflow:5000</span><span class="p">;</span>
-</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">   </span><span class="s">Host</span><span class="w"> </span><span class="s">localhost</span><span class="p">;</span><span class="w">       </span><span class="c1"># ← la clave del workaround</span>
+</span><span id="__span-1-6"><a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">   </span><span class="s">Host</span><span class="w"> </span><span class="s">localhost</span><span class="p">;</span>
 </span><span id="__span-1-7"><a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">   </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span>
 </span><span id="__span-1-8"><a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">        </span><span class="kn">proxy_set_header</span><span class="w">   </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
 </span><span id="__span-1-9"><a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-1-10"><a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="p">}</span>
 </span></code></pre></div>
-<h2 id="impacto-en-el-proyecto">Impacto en el proyecto<a class="headerlink" href="#impacto-en-el-proyecto" title="Permanent link">¶</a></h2>
-<p>Todos los contenedores que necesitan hablar con MLflow usan la variable de entorno:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nt">MLFLOW_TRACKING_URI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://mlflow-proxy:5001</span>
-</span></code></pre></div>
-<p>Esto aplica a: <strong>JupyterLab</strong>, <strong>FastAPI</strong>, <strong>Airflow worker</strong>.</p>
-<div class="admonition info">
-<p class="admonition-title">Acceso externo</p>
-<p>El contenedor <code>mlflow</code> sí está expuesto en el puerto <code>5000</code> del host para acceso directo desde el navegador (<code>http://localhost:5000</code>). Ahí el header <code>Host</code> ya es <code>localhost</code>, así que funciona sin proxy.</p>
-</div>
 <div class="admonition warning">
-<p class="admonition-title">No usar <code>mlflow:5000</code> directamente</p>
-<p>Desde cualquier código Python corriendo dentro de un contenedor, <strong>siempre</strong> usar <code>http://mlflow-proxy:5001</code> como tracking URI. Usar <code>http://mlflow:5000</code> directamente va a fallar con un error de DNS rebinding protection.</p>
+<p class="admonition-title">Regla de oro</p>
+<p>Desde cualquier código Python corriendo dentro de un contenedor, <strong>siempre</strong> usar <code>http://mlflow-proxy:5001</code>. La variable de entorno <code>MLFLOW_TRACKING_URI</code> ya está configurada en todos los contenedores — no hace falta llamar a <code>mlflow.set_tracking_uri()</code> manualmente.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Acceso desde el browser</p>
+<p>El contenedor <code>mlflow</code> está expuesto en el puerto <code>5000</code> del host. Desde el browser, <code>http://localhost:5000</code> funciona sin proxy porque el header <code>Host</code> ya es <code>localhost</code>.</p>
 </div>
 </article>
 </div>
@@ -746,7 +709,7 @@
     </a>
 </div>
 <div class="md-social">
-<a class="md-social__link" href="https://github.com/lilidl-nft/tp_final_mlops1_23co" rel="noopener" target="_blank" title="github.com">
+<a class="md-social__link" href="https://github.com/maxisoadgh/tp_final_mlops1_23co" rel="noopener" target="_blank" title="github.com">
 <svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
 </a>
 </div>
