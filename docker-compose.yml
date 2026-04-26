@@ -1,5 +1,5 @@
 # ──────────────────────────────────────────────────────────────────────────────
-# Stack TP — Aprendizaje de Máquina II
+# Stack TP MLops I
 # Servicios: JupyterLab · MLflow · Airflow (CeleryExecutor) · MinIO
 # ──────────────────────────────────────────────────────────────────────────────
 version: "3.8"
