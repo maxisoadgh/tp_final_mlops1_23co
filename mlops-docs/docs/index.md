@@ -30,6 +30,15 @@ El flujo completo cubre:
 
 <div class="service-grid" markdown>
 <div class="service-card" markdown>
+<div class="icon">🎛️</div>
+**Streamlit**
+
+Frontend web para predecir sin Swagger. Formulario completo con resultado visual.
+
+[Ver docs →](servicios/streamlit.md)
+</div>
+
+<div class="service-card" markdown>
 <div class="icon">🔬</div>
 **JupyterLab**
 
@@ -83,6 +92,7 @@ DAGs de ingesta y entrenamiento con CeleryExecutor + Redis.
 |----------|-----|-------------|
 | JupyterLab | <http://localhost:8888> | sin token |
 | FastAPI Swagger | <http://localhost:8000/docs> | — |
+| Streamlit | <http://localhost:8501> | — |
 | MLflow UI | <http://localhost:5000> | — |
 | Airflow UI | <http://localhost:8080> | `airflow` / `airflow` |
 | MinIO Console | <http://localhost:9001> | `minio` / `minio123` |

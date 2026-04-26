@@ -95,6 +95,7 @@ curl -X POST http://localhost:8000/predict \
 | Servicio | URL | Credenciales |
 |----------|-----|-------------|
 | FastAPI Swagger | <http://localhost:8000/docs> | — |
+| Streamlit | <http://localhost:8501> | — |
 | MLflow | <http://localhost:5000> | — |
 | Airflow | <http://localhost:8080> | `airflow` / `airflow` |
 | MinIO Console | <http://localhost:9001> | `minio` / `minio123` |

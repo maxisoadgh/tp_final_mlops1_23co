@@ -11,6 +11,7 @@
 | **mlflow-proxy** | `nginx:alpine` | `5001` (interno) | Proxy nginx — workaround DNS rebinding |
 | **JupyterLab** | `./dockerfiles/jupyter` (Python 3.12-slim) | `8888` | Experimentación |
 | **FastAPI** | `./dockerfiles/api` (Python 3.12-slim) | `8000` | Serving de predicciones |
+| **Streamlit** | `./dockerfiles/streamlit` (Python 3.12-slim) | `8501` | Frontend web de predicción |
 | **Airflow** | `apache/airflow:3.0.2` | `8080` | Orquestación (CeleryExecutor) |
 
 ## Paquetes Python principales

@@ -87,6 +87,7 @@ nav:
   - Servicios:
     - servicios/index.md
     - "FastAPI": servicios/api.md
+    - "Streamlit": servicios/streamlit.md
     - "MLflow": servicios/mlflow.md
     - "Airflow": servicios/airflow.md
     - "MinIO": servicios/minio.md

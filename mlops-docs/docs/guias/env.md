@@ -21,6 +21,7 @@ cp .env.example .env
 | `MLFLOW_PORT` | `5000` | Puerto MLflow |
 | `JUPYTER_PORT` | `8888` | Puerto JupyterLab |
 | `API_PORT` | `8000` | Puerto FastAPI |
+| `STREAMLIT_PORT` | `8501` | Puerto Streamlit |
 | `AIRFLOW_PORT` | `8080` | Puerto Airflow |
 | `AIRFLOW_UID` | `50000` | UID proceso Airflow |
 | `AIRFLOW_IMAGE_NAME` | `extending_airflow:latest` | Imagen Airflow custom |
