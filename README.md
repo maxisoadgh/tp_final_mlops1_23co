@@ -85,12 +85,20 @@ tp_final_mlops1_23co/
 │   ├── main.py                        # FastAPI app
 │   └── requirements.txt
 │
+├── streamlit/
+│   ├── streamlit_app.py               # Frontend Streamlit para consumir la API
+│   └── .streamlit/
+│       └── config.toml                # Tema visual de la app
+│
 ├── dockerfiles/
 │   ├── airflow/
 │   │   ├── Dockerfile                 # apache/airflow:3.0.2 con dependencias extra
 │   │   └── requirements.txt
 │   ├── api/
 │   │   └── Dockerfile                 # python:3.12-slim + uvicorn
+│   ├── streamlit/
+│   │   ├── Dockerfile                 # python:3.12-slim + Streamlit
+│   │   └── requirements.txt
 │   ├── jupyter/
 │   │   ├── Dockerfile                 # python:3.12-slim + JupyterLab
 │   │   └── requirements.txt
@@ -123,6 +131,7 @@ tp_final_mlops1_23co/
 | Optimización de hiperparámetros | Optuna (runs anidados en MLflow) |
 | Experiment tracking | MLflow + PostgreSQL backend + MinIO artifact store |
 | Serving / API | FastAPI + uvicorn |
+| Frontend | Streamlit |
 | Orquestación | Apache Airflow 3.0 (CeleryExecutor + Redis/Valkey) |
 | Containerización | Docker / docker-compose |
 | Object storage | MinIO (compatible S3) |
@@ -177,6 +186,9 @@ JUPYTER_PORT=8888
 # FastAPI
 API_PORT=8000
 
+# Streamlit
+STREAMLIT_PORT=8501
+
 # Airflow
 AIRFLOW__API_AUTH__JWT_SECRET=cambiar_este_valor_por_uno_seguro
 _AIRFLOW_WWW_USER_USERNAME=airflow
@@ -222,6 +234,7 @@ docker-compose down -v --rmi local
 |---|---|---|---|
 | **JupyterLab** | http://localhost:8888 | sin token/password | Notebooks en `/notebooks` |
 | **FastAPI** | http://localhost:8000 | — | Docs en `/docs` y `/redoc` |
+| **Streamlit** | http://localhost:8501 | — | Frontend para consultar predicciones |
 | **MLflow UI** | http://localhost:5000 | — | Acceso externo directo |
 | **mlflow-proxy** | interno `:5001` | — | Usado por Jupyter y Airflow internamente |
 | **Airflow UI** | http://localhost:8080 | `airflow` / `airflow` | |
@@ -282,9 +295,11 @@ Los 4 modelos se entrenan en paralelo. Cada uno ejecuta una búsqueda de hiperpa
 - Se listan los runs de cada modelo. Expandir cualquiera para ver los runs anidados de cada trial de Optuna con sus hiperparámetros y métricas
 - En **Models**, bajo `airline-satisfaction-best`, aparece la versión registrada del mejor modelo con su `run_id` de origen
 
-### Paso 4 — Probar la inferencia desde Swagger
+### Paso 4 — Probar la inferencia desde Swagger o Streamlit
 
 Una vez finalizado el DAG, la API ya tiene acceso al modelo registrado en MLflow.
+
+**Opción A: Swagger / FastAPI**
 
 1. Abrir http://localhost:8000/docs
 2. Buscar el endpoint `POST /predict`
@@ -326,6 +341,14 @@ curl -X POST "http://localhost:8000/predict" \
      -H "Content-Type: application/json" \
      -d '{...}'
 ```
+
+**Opción B: Streamlit**
+
+1. Abrir http://localhost:8501
+2. Completar el formulario con los datos del pasajero o cargar el ejemplo precargado
+3. Ejecutar la predicción desde la interfaz
+
+El contenedor de Streamlit consume la API internamente usando `API_BASE_URL=http://api:8000`, definido en `docker-compose.yml`.
 
 ### Paso 5 — Reentrenar
 
@@ -457,4 +480,12 @@ Editar `api/requirements.txt` y hacer rebuild:
 
 ```bash
 docker-compose up --build -d api
+```
+
+### Agregar paquetes a Streamlit
+
+Editar `dockerfiles/streamlit/requirements.txt` y hacer rebuild:
+
+```bash
+docker-compose up --build -d streamlit
 ```
