@@ -67,30 +67,32 @@ Si la aerolínea puede predecir qué perfil de pasajero tiene mayor probabilidad
 ```
 tp_final_mlops1_23co/
 │
-├── src/                               # Módulos Python reutilizables
-│   ├── config.py                      # Columnas, constantes, experiment name
+├── src/                               # Módulos Python reutilizables (montados en Airflow, API y Jupyter)
+│   ├── __init__.py
+│   ├── config.py                      # Columnas, constantes, experiment name, model registry name
 │   ├── data_loader.py                 # Carga de CSV y encoding del target
-│   ├── preprocessing.py               # ColumnTransformer, pipelines sklearn
-│   ├── training.py                    # Entrenamiento, tuning y logging de métricas/artifacts en MLflow
+│   ├── preprocessing.py               # ColumnTransformer, pipelines sklearn, preparación para inferencia
+│   ├── training.py                    # Entrenamiento con Optuna + MLflow (LR, KNN, RF, XGBoost)
 │   ├── evaluation.py                  # Métricas, figuras de evaluación y selección del mejor modelo
 │   └── mlflow_utils.py                # Setup de experimentos y Model Registry
 │
 ├── airflow/
 │   ├── dags/
 │   │   ├── import_and_process.py          # DAG de descarga y preparación inicial de datasets desde MinIO
-│   │   └── airline_satisfaction_dag.py    # DAG principal de entrenamiento
+│   │   └── airline_satisfaction_dag.py    # DAG principal de entrenamiento (4 modelos en paralelo)
 │   ├── secrets/
 │   │   ├── connections.yaml           # Conexiones S3/MinIO, bases de datos, etc.
 │   │   └── variables.yaml             # Variables accesibles desde los DAGs
 │   └── config/
 │
 ├── notebooks/
-│   ├── models.ipynb                   # Exploración de modelos
+│   ├── models.ipynb                   # Exploración temprana de modelos
 │   ├── mlflow_hyperparam_search.ipynb # Búsqueda de hiperparámetros con MLflow
-│   └── test.ipynb
+│   └── modeltesting.ipynb             # Testing de modelos entrenados
 │
 ├── api/
-│   ├── main.py                        # FastAPI app
+│   ├── main.py                        # FastAPI app: /predict, /reload, /health
+│   ├── schemas.py                     # Pydantic models: PassengerFeatures, PredictionResponse
 │   └── requirements.txt
 │
 ├── streamlit/
@@ -101,18 +103,47 @@ tp_final_mlops1_23co/
 ├── dockerfiles/
 │   ├── airflow/
 │   │   ├── Dockerfile                 # apache/airflow:3.0.2 con dependencias extra
-│   │   └── requirements.txt
+│   │   └── requirements.txt           # pandas, scikit-learn, mlflow, boto3, xgboost, optuna
 │   ├── api/
 │   │   └── Dockerfile                 # python:3.12-slim + uvicorn
 │   ├── streamlit/
 │   │   ├── Dockerfile                 # python:3.12-slim + Streamlit
 │   │   └── requirements.txt
 │   ├── jupyter/
-│   │   ├── Dockerfile                 # python:3.12-slim + JupyterLab
-│   │   └── requirements.txt
+│   │   ├── Dockerfile                 # jupyter/scipy-notebook + paquetes ML
+│   │   └── requirements.txt           # jupyterlab, mlflow, boto3, xgboost, optuna, dython
 │   └── mlflow/
 │       ├── Dockerfile
 │       └── requirements.txt
+│
+├── mlops-docs/                        # Documentación técnica del proyecto (MkDocs)
+│   ├── mkdocs.yml                     # Configuración de MkDocs Material
+│   ├── requirements-docs.txt
+│   └── docs/
+│       ├── index.md
+│       ├── equipo.md
+│       ├── contribuir.md
+│       ├── arquitectura/
+│       │   ├── index.md
+│       │   ├── stack.md               # Stack tecnológico completo
+│       │   ├── red.md                 # Diagrama de red interna Docker
+│       │   └── mlflow-proxy.md        # Detalle del proxy nginx anti-DNS rebinding
+│       ├── guias/
+│       │   ├── quickstart.md          # Cómo levantar el stack desde cero
+│       │   ├── env.md                 # Variables de entorno y secretos
+│       │   ├── dags.md                # Cómo agregar y operar DAGs
+│       │   └── paquetes.md            # Cómo agregar dependencias Python por servicio
+│       ├── modelo/
+│       │   ├── index.md
+│       │   └── pipeline.md            # Pipeline ML: preprocesamiento, modelos, tuning, registro
+│       └── servicios/
+│           ├── index.md
+│           ├── airflow.md
+│           ├── api.md
+│           ├── jupyter.md
+│           ├── minio.md
+│           ├── mlflow.md
+│           └── streamlit.md
 │
 ├── datasets/
 │   └── aerolineas/
