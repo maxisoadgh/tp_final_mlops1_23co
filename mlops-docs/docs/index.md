@@ -14,7 +14,7 @@
 
 ## ¿Qué hace este proyecto?
 
-TP Final de la materia **Aprendizaje de Máquina II**. Implementa un stack MLOps completo para predecir si un pasajero quedará **satisfecho** o **neutral/insatisfecho** con su vuelo.
+TP Final de la materia **MLops I**. Implementa un stack MLOps completo para predecir si un pasajero quedará **satisfecho** o **neutral/insatisfecho** con su vuelo.
 
 El flujo completo cubre:
 
