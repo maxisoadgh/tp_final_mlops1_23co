@@ -1,0 +1,110 @@
+site_name: "MLOps TP Final"
+site_description: "Plataforma de entrenamiento y serving de modelos ML — satisfacción de pasajeros de aerolíneas"
+site_url: https://maxisoadgh.github.io/tp_final_mlops1_23co
+repo_url: https://github.com/maxisoadgh/tp_final_mlops1_23co
+repo_name: tp_final_mlops1_23co
+edit_uri: edit/main/mlops-docs/docs/
+
+theme:
+  name: material
+  language: es
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: deep purple
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Modo oscuro
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: deep purple
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Modo claro
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.instant
+    - navigation.indexes
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+  icon:
+    repo: fontawesome/brands/github
+    logo: material/airplane-takeoff
+
+plugins:
+  - search:
+      lang: es
+  - mermaid2:
+      arguments:
+        theme: |
+          ^(JSON.parse(__md_get("__palette").index == 1)) ? 'dark' : 'default'
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - def_list
+
+nav:
+  - Inicio:
+    - index.md
+    - Equipo: equipo.md
+  - Arquitectura:
+    - arquitectura/index.md
+    - "Stack tecnológico": arquitectura/stack.md
+    - "Red interna": arquitectura/red.md
+    - "Workaround MLflow proxy": arquitectura/mlflow-proxy.md
+  - Servicios:
+    - servicios/index.md
+    - "FastAPI": servicios/api.md
+    - "MLflow": servicios/mlflow.md
+    - "Airflow": servicios/airflow.md
+    - "MinIO": servicios/minio.md
+    - "JupyterLab": servicios/jupyter.md
+  - Dataset & Modelo:
+    - modelo/index.md
+    - "Pipeline de entrenamiento": modelo/pipeline.md
+  - Guías:
+    - guias/quickstart.md
+    - "Variables de entorno": guias/env.md
+    - "Agregar DAGs": guias/dags.md
+    - "Agregar paquetes Python": guias/paquetes.md
+  - Contribuir: contribuir.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/maxisoadgh/tp_final_mlops1_23co
+
+extra_css:
+  - stylesheets/extra.css
