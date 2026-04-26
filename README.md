@@ -234,12 +234,33 @@ docker-compose down -v --rmi local
 
 Una vez que todos los contenedores están levantados y saludables, el flujo completo es el siguiente.
 
-### Paso 1 — Lanzar el entrenamiento desde Airflow
+### Paso 1 — Cargar el dataset a MinIO
 
 1. Abrir la UI de Airflow en http://localhost:8080 (`airflow` / `airflow`)
-2. En la lista de DAGs, buscar **`airline_satisfaction_training`**
+2. En la lista de DAGs, buscar **`descarga_datasets_desde_minio`**
 3. Activar el DAG con el toggle si aparece en pausa
 4. Hacer click en **Trigger DAG ▶** (columna Actions)
+
+El DAG lanza las siguientes tasks:
+
+```
+load_and_prepare_data
+        ▼ (Datasets listos en /opt/airflow/datasets)
+        │
+        ├──── train_logistic_regression ──┐
+        ├──── train_knn ──────────────────┤
+        ├──── train_random_forest ────────┤
+        └──── train_xgboost ─────────────┘
+                                          │
+                                          ▼
+                               select_and_register_best
+```
+
+### Paso 2 — Lanzar el entrenamiento desde Airflow
+
+1. En la lista de DAGs, buscar **`airline_satisfaction_training`**
+2. Activar el DAG con el toggle si aparece en pausa
+3. Hacer click en **Trigger DAG ▶** (columna Actions)
 
 El DAG lanza las siguientes tasks:
 
@@ -258,7 +279,7 @@ Los 4 modelos se entrenan en paralelo. Cada uno ejecuta una búsqueda de hiperpa
 
 > Para cambiar la cantidad de trials, editar la variable `N_TRIALS` en `airflow/dags/airline_satisfaction_dag.py`.
 
-### Paso 2 — Monitorear el entrenamiento
+### Paso 3 — Monitorear el entrenamiento
 
 **Desde Airflow:**
 - Click en el DAG run activo para ver el grafo de tasks en tiempo real
@@ -269,7 +290,7 @@ Los 4 modelos se entrenan en paralelo. Cada uno ejecuta una búsqueda de hiperpa
 - Se listan los runs de cada modelo. Expandir cualquiera para ver los runs anidados de cada trial de Optuna con sus hiperparámetros y métricas
 - En **Models**, bajo `airline-satisfaction-best`, aparece la versión registrada del mejor modelo con su `run_id` de origen
 
-### Paso 3 — Probar la inferencia desde Swagger
+### Paso 4 — Probar la inferencia desde Swagger
 
 Una vez finalizado el DAG, la API ya tiene acceso al modelo registrado en MLflow.
 

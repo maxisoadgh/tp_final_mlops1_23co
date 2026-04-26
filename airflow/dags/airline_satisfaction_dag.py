@@ -1,12 +1,13 @@
 """
 DAG de entrenamiento — satisfaccion de pasajeros de aerolineas.
 
-Carga datos, entrena 4 modelos en paralelo con Optuna + MLflow,
+Carga datos, entrena 4 modelos en paralelo con Optuna + MLflow + Boto3,
 y registra el mejor en el Model Registry.
 """
 
 import datetime
 import sys
+import boto3
 
 sys.path.insert(0, "/opt/airflow")
 
@@ -29,13 +30,13 @@ N_TRIALS = 10
     default_args=default_args,
     schedule=None,
     catchup=False,
-    tags=["ml", "training", "airline-satisfaction"],
+    tags=["ml", "training", "airline-satisfaction", "boto3"],
 )
 def airline_satisfaction_pipeline():
 
     @task(task_id="load_and_prepare_data", multiple_outputs=True)
     def load_and_prepare_data() -> dict:
-        """Carga CSVs, preprocesa y guarda como Parquet en /tmp."""
+        """Descarga de MinIO/S3, preprocesa y prepara para el entrenamiento."""
         import os
         import uuid
 
@@ -47,11 +48,26 @@ def airline_satisfaction_pipeline():
 
         setup_experiment(EXPERIMENT_NAME)
 
-        train_path = "/opt/airflow/datasets/aerolineas/train.csv"
-        test_path = "/opt/airflow/datasets/aerolineas/test.csv"
+        s3_client = boto3.client(
+            "s3",
+            endpoint_url=os.getenv("S3_ENDPOINT_URL", "http://minio:9000"),
+            aws_access_key_id=os.getenv("S3_ACCESS_KEY"),
+            aws_secret_access_key=os.getenv("S3_SECRET_KEY"),
+            region_name="us-east-1",
+        )
 
-        df_train = load_dataset(train_path)
-        df_test = load_dataset(test_path)
+        BUCKET = "data-lake"
+        LOCAL_DIR = "/opt/airflow/datasets/aerolineas"
+        ARCHIVOS_S3 = ["aerolineas/train.csv", "aerolineas/test.csv"]
+
+        os.makedirs(LOCAL_DIR, exist_ok=True)
+
+        for key in ARCHIVOS_S3:
+            local_file = os.path.join(LOCAL_DIR, os.path.basename(key))
+            s3_client.download_file(BUCKET, key, local_file)
+
+        df_train = load_dataset(os.path.join(LOCAL_DIR, "train.csv"))
+        df_test = load_dataset(os.path.join(LOCAL_DIR, "test.csv"))
 
         X_train, y_train = prepare_features_target(df_train)
         X_test, y_test = prepare_features_target(df_test)
@@ -63,10 +79,6 @@ def airline_satisfaction_pipeline():
         y_train.to_frame().to_parquet(os.path.join(run_dir, "y_train.parquet"))
         X_test.to_parquet(os.path.join(run_dir, "X_test.parquet"))
         y_test.to_frame().to_parquet(os.path.join(run_dir, "y_test.parquet"))
-
-        print(f"Datos preparados en {run_dir}")
-        print(f"  Train: X={X_train.shape}, y={y_train.shape}")
-        print(f"  Test:  X={X_test.shape}, y={y_test.shape}")
 
         return {"data_dir": run_dir}
 
@@ -140,9 +152,7 @@ def airline_satisfaction_pipeline():
         X_test = pd.read_parquet(f"{data_dir}/X_test.parquet")
         y_test = pd.read_parquet(f"{data_dir}/y_test.parquet").iloc[:, 0]
 
-        result = train_xgboost(
-            X_train, y_train, X_test, y_test, n_trials=N_TRIALS
-        )
+        result = train_xgboost(X_train, y_train, X_test, y_test, n_trials=N_TRIALS)
         print(f"XGBoost -- F1: {result['f1_score']}")
         return result
 

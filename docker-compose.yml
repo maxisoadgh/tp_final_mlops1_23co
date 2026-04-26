@@ -22,8 +22,9 @@ x-airflow-common: &airflow-common
     AIRFLOW__CORE__EXECUTION_API_SERVER_URL: 'http://airflow-apiserver:8080/execution/'
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     AIRFLOW__WEBSERVER__EXPOSE_CONFIG: 'True'
-    AIRFLOW__SECRETS__BACKEND: airflow.secrets.local_filesystem.LocalFilesystemBackend
-    AIRFLOW__SECRETS__BACKEND_KWARGS: '{"variables_file_path": "/opt/secrets/variables.yaml", "connections_file_path": "/opt/secrets/connections.yaml"}'
+    _PIP_ADDITIONAL_REQUIREMENTS: "boto3 pandas"
+    AIRFLOW__SECRETS__BACKEND: 'airflow.secrets.local_filesystem.LocalFilesystemBackend' 
+    AIRFLOW__SECRETS__BACKEND_KWARGS: '{"connections_file_path": "/opt/secrets/connections.yaml"}'
     AWS_ACCESS_KEY_ID: ${MINIO_ACCESS_KEY:-minio}
     AWS_SECRET_ACCESS_KEY: ${MINIO_SECRET_ACCESS_KEY:-minio123}
     AWS_ENDPOINT_URL_S3: http://minio:9000
@@ -34,9 +35,9 @@ x-airflow-common: &airflow-common
     - ${AIRFLOW_PROJ_DIR:-./airflow}/logs:/opt/airflow/logs
     - ${AIRFLOW_PROJ_DIR:-./airflow}/config:/opt/airflow/config
     - ${AIRFLOW_PROJ_DIR:-./airflow}/plugins:/opt/airflow/plugins
-    - ${AIRFLOW_PROJ_DIR:-./airflow}/secrets:/opt/secrets
     - ./src:/opt/airflow/src
     - ./datasets:/opt/airflow/datasets
+    - ./airflow/secrets:/opt/secrets
   networks:
     - backend
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}"
@@ -47,7 +48,6 @@ x-airflow-common: &airflow-common
       condition: service_healthy
 
 services:
-
   # ── Base de datos ────────────────────────────────────────────
   postgres:
     restart: always
@@ -110,23 +110,40 @@ services:
       timeout: 10s
       retries: 5
       start_period: 10s
-
-  minio-create-buckets:
+  minio-init:
     image: minio/mc:latest
-    container_name: minio_create_buckets
+    container_name: minio_init
     depends_on:
       minio:
         condition: service_healthy
     networks:
       - backend
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ACCESS_KEY:-minio}
+      MINIO_ROOT_PASSWORD: ${MINIO_SECRET_ACCESS_KEY:-minio123}
+      BUCKET_MLFLOW: ${MLFLOW_BUCKET_NAME:-mlflow}
+      BUCKET_DATA_LAKE: "data-lake"
+    volumes:
+      - ./datasets:/datasets
     entrypoint: >
-      /bin/sh -c '
-      sleep 3;
-      /usr/bin/mc alias set s3 http://minio:9000 ${MINIO_ACCESS_KEY:-minio} ${MINIO_SECRET_ACCESS_KEY:-minio123};
-      /usr/bin/mc mb --ignore-existing s3/${MLFLOW_BUCKET_NAME:-mlflow};
+     /bin/sh -c "
+      until /usr/bin/mc alias set myminio http://minio:9000 \"$$MINIO_ROOT_USER\" \"$$MINIO_ROOT_PASSWORD\"; do
+        echo 'Esperando a MinIO...';
+        sleep 2;
+      done;
+      echo 'Creando buckets...';
+      /usr/bin/mc mb --ignore-existing myminio/$$BUCKET_MLFLOW;
+      /usr/bin/mc mb --ignore-existing myminio/$$BUCKET_DATA_LAKE;
+      echo 'Cargando datasets...';
+      if [ -d '/datasets/aerolineas' ]; then
+          /usr/bin/mc cp -r /datasets/aerolineas myminio/$$BUCKET_DATA_LAKE/;
+      else
+          echo 'ERROR: Carpeta /datasets/aerolineas no encontrada';
+      fi
+      /usr/bin/mc anonymous set download myminio/$$BUCKET_DATA_LAKE;
+      echo 'Provisioning finalizado con éxito.';
       exit 0;
-      '
-
+      "
   # ── MLflow ───────────────────────────────────────────────────
   mlflow:
     restart: always
@@ -253,7 +270,7 @@ services:
       _AIRFLOW_WWW_USER_CREATE: 'true'
       _AIRFLOW_WWW_USER_USERNAME: ${_AIRFLOW_WWW_USER_USERNAME:-airflow}
       _AIRFLOW_WWW_USER_PASSWORD: ${_AIRFLOW_WWW_USER_PASSWORD:-airflow}
-      _PIP_ADDITIONAL_REQUIREMENTS: ''
+      _PIP_ADDITIONAL_REQUIREMENTS: "boto3 pandas"
     user: "0:0"
 
   airflow-apiserver:
