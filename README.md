@@ -69,7 +69,8 @@ tp_final_mlops1_23co/
 │
 ├── airflow/
 │   ├── dags/
-│   │   └── airline_satisfaction_dag.py  # DAG principal de entrenamiento
+│   │   ├── import_and_process.py          # DAG de descarga y preparación inicial de datasets desde MinIO
+│   │   └── airline_satisfaction_dag.py    # DAG principal de entrenamiento
 │   ├── secrets/
 │   │   ├── connections.yaml           # Conexiones S3/MinIO, bases de datos, etc.
 │   │   └── variables.yaml             # Variables accesibles desde los DAGs
@@ -234,29 +235,20 @@ docker-compose down -v --rmi local
 
 Una vez que todos los contenedores están levantados y saludables, el flujo completo es el siguiente.
 
-### Paso 1 — Cargar el dataset a MinIO
+### Paso 1 — Descargar y preparar datasets desde MinIO
 
 1. Abrir la UI de Airflow en http://localhost:8080 (`airflow` / `airflow`)
-2. En la lista de DAGs, buscar **`descarga_datasets_desde_minio`**
+2. En la lista de DAGs, buscar **`descarga_datasets_desde_minio_v2`**
 3. Activar el DAG con el toggle si aparece en pausa
 4. Hacer click en **Trigger DAG ▶** (columna Actions)
 
-El DAG lanza las siguientes tasks:
+Este DAG ejecuta la preparación inicial de los datos necesarios para el pipeline. Descarga o sincroniza los archivos requeridos desde MinIO y deja los datasets disponibles para que el DAG de entrenamiento pueda consumirlos.
 
-```
-load_and_prepare_data
-        ▼ (Datasets listos en /opt/airflow/datasets)
-        │
-        ├──── train_logistic_regression ──┐
-        ├──── train_knn ──────────────────┤
-        ├──── train_random_forest ────────┤
-        └──── train_xgboost ─────────────┘
-                                          │
-                                          ▼
-                               select_and_register_best
-```
+El DAG debe finalizar correctamente antes de lanzar `airline_satisfaction_training`.
 
 ### Paso 2 — Lanzar el entrenamiento desde Airflow
+
+Una vez completado `descarga_datasets_desde_minio_v2`, lanzar el DAG de entrenamiento.
 
 1. En la lista de DAGs, buscar **`airline_satisfaction_training`**
 2. Activar el DAG con el toggle si aparece en pausa
@@ -335,7 +327,7 @@ curl -X POST "http://localhost:8000/predict" \
      -d '{...}'
 ```
 
-### Paso 4 — Reentrenar
+### Paso 5 — Reentrenar
 
 Para lanzar un nuevo ciclo de entrenamiento (por ejemplo, con más trials o con datos actualizados), simplemente volver al Paso 1 y hacer Trigger DAG nuevamente. Cada ejecución genera un nuevo run en MLflow y, si el nuevo modelo supera al anterior, se registra una versión nueva en el Model Registry.
 
