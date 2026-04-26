@@ -345,10 +345,11 @@ curl -X POST "http://localhost:8000/predict" \
 **Opción B: Streamlit**
 
 1. Abrir http://localhost:8501
-2. Completar el formulario con los datos del pasajero o cargar el ejemplo precargado
-3. Ejecutar la predicción desde la interfaz
+2. Si se acaba de entrenar un nuevo modelo, usar el botón **Recargar modelo** para que la API tome la última versión registrada en MLflow
+3. Completar el formulario con los datos del pasajero o cargar el ejemplo precargado
+4. Ejecutar la predicción desde la interfaz
 
-El contenedor de Streamlit consume la API internamente usando `API_BASE_URL=http://api:8000`, definido en `docker-compose.yml`.
+El contenedor de Streamlit consume la API internamente usando `API_BASE_URL=http://api:8000`, definido en `docker-compose.yml`. El botón **Recargar modelo** llama al endpoint `POST /reload` de FastAPI.
 
 ### Paso 5 — Reentrenar
 
